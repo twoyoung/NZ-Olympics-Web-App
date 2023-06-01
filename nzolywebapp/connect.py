@@ -1,7 +1,7 @@
 # These details are available on the first MySQL Workbench screen
 # Usually called 'Local Instance'
-dbuser = "root" #PUT YOUR MySQL username here - usually root
-dbpass = "XXXXXXX" #PUT YOUR PASSWORD HERE
-dbhost = "localhost" 
+dbuser = "2young" #PUT YOUR MySQL username here - usually root
+dbpass = "Young@32494971" #PUT YOUR PASSWORD HERE
+dbhost = "2young.mysql.pythonanywhere-services.com" 
 dbport = "3306"
-dbname = "nzoly"
+dbname = "2young$COMP636"
