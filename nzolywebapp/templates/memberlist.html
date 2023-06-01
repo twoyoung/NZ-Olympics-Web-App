@@ -9,7 +9,13 @@
     {% for member in memberlist %}
         <tr>
             {% for entry in member %}
-                <td>{{entry}}</td>
+                <td>
+                    {% if loop.index0 != 2 %}
+                        {{entry}}
+                    {% else %}
+                        <a href = {{ entry }}>{{ entry }}</a>
+                    {% endif %}
+                </td>
             {% endfor %}
         </tr>
     {% endfor %}
