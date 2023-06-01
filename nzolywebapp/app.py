@@ -43,3 +43,10 @@ def listevents():
     eventList = connection.fetchall()
     return render_template("eventlist.html", eventlist = eventList)
 
+@app.route("/<name>")
+def athleteinterface():
+    connection = getCursor()
+    connection.execute("")
+    athleteInfo = connection.fetchall()
+    return render_template("athleteinterface.html", name = name, athleteInfo)
+
