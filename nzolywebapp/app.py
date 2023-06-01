@@ -46,7 +46,7 @@ def listevents():
 @app.route("/<name>")
 def athleteinterface(name):
     connection = getCursor()
-    connection.execute("")
+    connection.execute("SELECT * FROM events;")
     athleteInfo = connection.fetchall()
     return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo)
 

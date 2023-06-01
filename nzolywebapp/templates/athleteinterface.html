@@ -6,12 +6,26 @@
 <h3>Upcoming Events & Stages</h3>
 
 <table class="table">
-    
+    <tr><th>Event ID</th><th>Event Name</th><th>Sport</th><th>NZ Team</th></tr>
+    {% for event in eventlist %}
+        <tr>
+            {% for entry in event %}
+                <td>{{entry}}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
 </table>
 
 <h3>Previous Results</h3>
 <table class="table">
- 
+    <tr><th>Event ID</th><th>Event Name</th><th>Sport</th><th>NZ Team</th></tr>
+    {% for event in eventlist %}
+        <tr>
+            {% for entry in event %}
+                <td>{{entry}}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
 </table>
 
 {% endblock %}
