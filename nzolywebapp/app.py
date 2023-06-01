@@ -54,7 +54,7 @@ def athleteinterface(name):
             ON event_stage_results.StageID = event_stage.StageID
             JOIN members
             ON members.MemberID = event_stage_results.MemberID
-            WHERE PointsScored >= PointsToQualify AND FirstName = name ;'''
+            WHERE PointsScored >= PointsToQualify AND FirstName = "Zoi" ;'''
     connection.execute(sql)
     athleteInfo = connection.fetchall()
     return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo)
