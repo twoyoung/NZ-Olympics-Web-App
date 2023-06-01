@@ -48,5 +48,5 @@ def athleteinterface(name):
     connection = getCursor()
     connection.execute("")
     athleteInfo = connection.fetchall()
-    return render_template("athleteinterface.html", name = name, athleteInfo)
+    return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo)
 
