@@ -3,29 +3,15 @@
 <!-- code in here to display a list of events -->
 <!-- eventlist is the variable passed in containing list of loans -->
 <h2>{{ name }}</h2>
-<h3>Upcoming Events & Stages</h3>
+<h4>Upcoming Events & Stages</h4>
 
 <table class="table">
-    <tr><th>Event ID</th><th>Event Name</th><th>Sport</th><th>NZ Team</th></tr>
-    {% for event in eventlist %}
-        <tr>
-            {% for entry in event %}
-                <td>{{entry}}</td>
-            {% endfor %}
-        </tr>
-    {% endfor %}
+  
 </table>
 
-<h3>Previous Results</h3>
+<h4>Previous Results</h4>
 <table class="table">
-    <tr><th>Event ID</th><th>Event Name</th><th>Sport</th><th>NZ Team</th></tr>
-    {% for event in eventlist %}
-        <tr>
-            {% for entry in event %}
-                <td>{{entry}}</td>
-            {% endfor %}
-        </tr>
-    {% endfor %}
+
 </table>
 
 {% endblock %}
