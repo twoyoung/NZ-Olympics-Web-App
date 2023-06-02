@@ -46,15 +46,24 @@ def listevents():
 @app.route("/<name>")
 def athleteinterface(name):
     connection = getCursor()
-    sql = """SELECT EventName, StageDate, StageName, Location 
-            FROM events JOIN event_stage 
-            ON events.EventID = event_stage.EventID 
-            JOIN event_stage_results 
-            ON event_stage_results.StageID = event_stage.StageID 
-            JOIN members 
-            ON members.MemberID = event_stage_results.MemberID 
-            WHERE PointsScored >= PointsToQualify AND FirstName = "Zoi";"""
-    connection.execute(sql)
+#    upcoming = """SELECT EventName, StageDate, StageName, Location 
+#           FROM events JOIN event_stage 
+#            ON events.EventID = event_stage.EventID 
+#            JOIN event_stage_results 
+#            ON event_stage_results.StageID = event_stage.StageID 
+#            JOIN members 
+#            ON members.MemberID = event_stage_results.MemberID 
+#            WHERE PointsScored >= PointsToQualify AND FirstName = "Zoi";"""
+    previousResults = """SELECT EventName, StageDate, StageName, Location, PointsScored
+                        FROM event_stage_results
+                        LEFT JOIN members
+                        ON members.MemberID = event_stage_results.MemberID
+                        LEFT JOIN event_stage
+                        ON event_stage.StageID = event_stage_results.StageID
+                        LEFT JOIN events
+                        ON events.EventID = event_stage.EventID
+                        Where FirstName = "Nico"; """
+    connection.execute(previousResults)
     athleteInfo = connection.fetchall()
     return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo)
 
