@@ -62,8 +62,8 @@ def athleteinterface(name):
                         ON event_stage.StageID = event_stage_results.StageID
                         LEFT JOIN events
                         ON events.EventID = event_stage.EventID
-                        Where FirstName = '%s'; """
-    connection.execute(previousResults, (name))
+                        Where FirstName = %s"""
+    connection.execute(previousResults, name)
     athleteInfo = connection.fetchall()
     return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo)
 
