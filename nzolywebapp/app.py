@@ -67,3 +67,6 @@ def athleteinterface(name):
     athleteInfo = connection.fetchall()
     return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo)
 
+@app.route("/admin")
+def admin():
+    return render_template("admin.html")
