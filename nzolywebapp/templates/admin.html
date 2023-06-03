@@ -4,12 +4,16 @@
     </head>
 
     <body>
-        <form name="search" id="A">
-            <input type="submit" name="name" id="c" />
-        </form>
 
         <section>
-            <form name="add" id="B">
+            <form name="edit" id="edit">
+                <fieldset id="search">
+                    <h1>Search for members or events</h1>
+                    <label for="membersorevents">Members or events:</label>
+                    <input type="search" name="searchinfo" placeholder="members or events" />
+                    <button>Search</button>
+                </fieldset>
+
                 <fieldset id="members">
                     <legend>Add new members and edit the details of existing members</legend>
                 </fieldset>
