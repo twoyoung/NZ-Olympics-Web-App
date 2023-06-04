@@ -62,7 +62,7 @@ def athleteinterface(name):
                         ON event_stage.StageID = event_stage_results.StageID
                         LEFT JOIN events
                         ON events.EventID = event_stage.EventID
-                        Where FirstName = %s；"""
+                        Where FirstName = %s"""
     parameters = (name,)
     connection.execute(previousResults, parameters)
     athleteInfo = connection.fetchall()
