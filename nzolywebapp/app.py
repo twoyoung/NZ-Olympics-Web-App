@@ -72,12 +72,9 @@ def athleteinterface(name):
     eventInfo = connection.fetchall()
     return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo, eventinfo = eventInfo)
 
-@app.route("/admin/<str>")
+@app.route("/admin")
 def admin():
-    if not str:
-        return render_template("admin.html") 
-    else:
-        return render_template("eventlist.html")
+    return render_template("admin.html")
 
 
 #@app.route("/admin/<str>", methods=["GET", "POST"])
