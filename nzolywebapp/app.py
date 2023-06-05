@@ -39,7 +39,7 @@ def listevents():
     eventList = connection.fetchall()
     return render_template("eventlist.html", eventlist = eventList)
 
-@app.route("/listmembers")
+#@app.route("/listmembers")
 @app.route("/listmembers/<name>")
 def listmembers(name):
     if not name:
