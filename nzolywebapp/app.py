@@ -90,13 +90,13 @@ def results():
         parameters = (f"%{item}%")
         connection.execute(sql1, (parameters, parameters))
         memberResults.extend(connection.fetchall())
-        memberResults.list(set(memberResults))
+        memberResults = list(set(memberResults))
         sql2 = """SELECT *
                 FROM events
                 WHERE events.EventName LIKE %s;"""
         connection.execute(sql2, (parameters,))
         eventResults.extend(connection.fetchall())
-        eventResults.list(set(eventResults))
+        eventResults = list(set(eventResults))
     return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
         
         
