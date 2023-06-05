@@ -71,10 +71,14 @@ def athleteinterface(name):
     connection.execute(upcomingEvents, parameters)
     eventInfo = connection.fetchall()
     return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo, eventinfo = eventInfo)
-        
+
 @app.route("/admin")
-def adminpage():
-    return render_template("admin.html")
+def admin():
+    return render_template("admin.html") 
+
+#@app.route("/admin")
+#def adminpage():
+#    return render_template("admin.html")
 
 
 #@app.route("/admin/<str>", methods=["GET", "POST"])
