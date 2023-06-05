@@ -8,10 +8,10 @@
 <h4>Search results in members:</h4>
     <table class="table">
         <tr><th>MemberID</th><th>TeamID</th><th>FirstName</th><th>LastName</th><th>City</th><th>Birthdate</th></tr>
-        {% for item in memberresults %}
+        {% for member in memberresults %}
             <tr>
-            {% for entry in item %}
-                <td>{{entry}}</td>
+            {% for item in member %}
+                <td>{{item}}</td>
             {% endfor %}
             </tr>
         {% endfor %}
@@ -20,10 +20,10 @@
 <h4>Search results in events:</h4>
     <table class="table">
         <tr><th>EventID</th><th>EventName</th><th>Sport</th><th>NZTeam</th></tr>
-        {% for item in eventresults %}
+        {% for event in eventresults %}
         <tr>
-        {% for entry in item %}
-            <td>{{entry}}</td>
+        {% for item in event %}
+            <td>{{item}}</td>
         {% endfor %}
         </tr>
         {% endfor %}
