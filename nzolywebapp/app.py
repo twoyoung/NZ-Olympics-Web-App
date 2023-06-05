@@ -27,9 +27,13 @@ def getCursor():
 def home():
     return render_template("base.html")
 
-
-#def listmembers():
-    
+@app.route("/listmembers")
+def listmembers():
+    connection = getCursor()
+    connection.execute("SELECT members.MemberID, teams.TeamName, members.FirstName, members.LastName, members.City, members.Birthdate FROM members JOIN teams on members.TeamID = teams.TeamID;")
+    memberList = connection.fetchall()
+    # print(memberList)
+    return render_template("memberlist.html", memberlist = memberList)
 
 
 @app.route("/listevents")
@@ -39,18 +43,11 @@ def listevents():
     eventList = connection.fetchall()
     return render_template("eventlist.html", eventlist = eventList)
 
-#@app.route("/listmembers")
+
 @app.route("/listmembers/<name>")
-def listmembers(name):
-    if not name:
-        connection = getCursor()
-        connection.execute("SELECT members.MemberID, teams.TeamName, members.FirstName, members.LastName, members.City, members.Birthdate FROM members JOIN teams on members.TeamID = teams.TeamID;")
-        memberList = connection.fetchall()
-        # print(memberList)
-        return render_template("memberlist.html", memberlist = memberList)
-    else:
-        connection = getCursor()
-        upcomingEvents = """SELECT EventName, StageDate, StageName, Location 
+def athleteinterface(name):
+    connection = getCursor()
+    upcomingEvents = """SELECT EventName, StageDate, StageName, Location 
                         FROM events 
                         LEFT JOIN event_stage
                         ON events.EventID = event_stage.EventID
@@ -59,7 +56,7 @@ def listmembers(name):
                         LEFT JOIN members
                         ON teams.TeamID = members.TeamID
                         WHERE (StageID IS NULL OR StageID NOT IN (SELECT event_stage_results.StageID FROM event_stage_results)) AND members.FirstName = %s"""
-        previousResults = """SELECT EventName, StageDate, StageName, Location, PointsScored
+    previousResults = """SELECT EventName, StageDate, StageName, Location, PointsScored
                         FROM event_stage_results
                         LEFT JOIN members
                         ON members.MemberID = event_stage_results.MemberID
@@ -68,12 +65,12 @@ def listmembers(name):
                         LEFT JOIN events
                         ON events.EventID = event_stage.EventID
                         Where FirstName = %s"""
-        parameters = (name,)
-        connection.execute(previousResults, parameters)
-        athleteInfo = connection.fetchall()
-        connection.execute(upcomingEvents, parameters)
-        eventInfo = connection.fetchall()
-        return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo, eventinfo = eventInfo)
+    parameters = (name,)
+    connection.execute(previousResults, parameters)
+    athleteInfo = connection.fetchall()
+    connection.execute(upcomingEvents, parameters)
+    eventInfo = connection.fetchall()
+    return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo, eventinfo = eventInfo)
         
 @app.route("/admin")
 def admin(str):
