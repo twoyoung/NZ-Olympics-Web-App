@@ -76,12 +76,28 @@ def athleteinterface(name):
 def admin():
     return render_template("admin.html")
 
+@app.route("/admin/results")
+def results():
+    name=request.args['searchinfo']
+    str = name.split()
+    memberResults = list()
+    eventResults = list()
+    for item in str:
+        sql1 = """SELECT * 
+                FROM members 
+                WHERE members.FirstName LIKE '%'+%s+'%' OR members.LastName LIKE '%'+%s+'%';"""
+        parameters = (item,)
+        connection.execute(sql1, parameters)
+        memberResults.append(connection.fetchall())
+        sql2 = """SELECT *
+                FROM events
+                WHERE events.EventName LIKE '%'+%s+'%';"""
+        connection.execute(sql2, parameters)
+        eventResults.append(connection.fetchall())        
+    return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
 
-#@app.route("/admin/<str>", methods=["GET", "POST"])
-#def admin(str):
-#    if not str:
-#        return render_template("admin.html")
-#    else:
+
+
 #        request.method == "POST"
 #        name = request.form.get("str")
 #        sql = """SELECT * FROM members WHERE members.FirstName LIKE '%'+%s+'%' OR members.LastName LIKE '%'+%s+'%';"""
