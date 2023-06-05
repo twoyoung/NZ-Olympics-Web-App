@@ -5,13 +5,13 @@
 
 <form action="/admin/results" method="get">
     <fieldset id="search">
-        <label for="membersorevents">Input the name of members or/and events:</label>
+        <label for="membersorevents">Search for members or/and events by name:</label>
         <input type="text" name="searchinfo" placeholder="members or events" />
         <button type="submit">Search</button>
     </fieldset>
 </form>
 
-<form>
+<form action="/admin/add" method="post">
     <fieldset id="addmember">
         <label for="MemberID">Member ID:</label>
         <input type="number" name="memberid" placeholder="0000" />
@@ -25,7 +25,7 @@
         <input type="text" name="city" />
         <label for="Birthdate">Birthdate:</label>
         <input type="date" name="birthdate" />
-        <button type="Add">Search</button>
+        <button type="submit">Add</button>
     </fieldset>
 </form>
 

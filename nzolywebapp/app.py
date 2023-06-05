@@ -100,3 +100,10 @@ def results():
     return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
         
         
+@app.route("/admin/add")
+def add():
+    member = (request.args['memberid'],request.args['teamid'],request.args['firstname'],request.args['lastname'],request.args['city'],request.args['birthdate'])
+    sql = "INSERT INTO member VALUES %s;"
+    parameters = (member,)
+    connection = getCursor()
+    connection.execute(sql, parameters)
