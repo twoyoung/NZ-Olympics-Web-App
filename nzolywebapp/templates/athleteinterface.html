@@ -10,7 +10,7 @@
         <h2>{{ name }}</h2>
         <h4>Upcoming Events & Stages</h4>
         <table class="table">
-            <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th><th>PointsScored</th></tr>
+            <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th></tr>
             {% for event in eventinfo %}
                 <tr>
                     {% for entry in event %}
@@ -22,7 +22,7 @@
 
         <h4>Previous Results</h4>
         <table class="table">
-            <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th></tr>
+            <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th><th>PointsScored</th></tr>
             {% for athlete in athleteinfo %}
                 <tr>
                     {% for entry in athlete %}
