@@ -102,8 +102,14 @@ def results():
         
 @app.route("/admin/add", methods = ['GET', 'POST'])
 def add():
-    member = (request.args['memberid'],request.args['teamid'],request.args['firstname'],request.args['lastname'],request.args['city'],request.args['birthdate'])
-    sql = "INSERT INTO member VALUES %s;"
-    parameters = (member,)
-    connection = getCursor()
-    connection.execute(sql, parameters)
+    if request.method == 'POST':
+        memberid = request.args['memberid']
+        teamid = request.args['teamid']
+        firstname = request.args['firstname']
+        lastname = request.args['lastname']
+        city = request.args['city']
+        birthdate = request.args['birthdate']
+        sql = "INSERT INTO member VALUES (%s, %s, %s, %s, %s, %s);"
+        parameters = (memberid, teamid, firstname, lastname, city, birthdate)
+        connection = getCursor()
+        connection.execute(sql, parameters)
