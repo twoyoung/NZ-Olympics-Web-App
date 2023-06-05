@@ -89,22 +89,12 @@ def results():
                 WHERE members.FirstName LIKE %s OR members.LastName LIKE %s;"""
         parameters = (f"%{item}%")
         connection.execute(sql1, (parameters, parameters))
-        memberResults.append(connection.fetchall())
+        memberResults.extend(connection.fetchall())
         sql2 = """SELECT *
                 FROM events
                 WHERE events.EventName LIKE %s;"""
         connection.execute(sql2, (parameters,))
-        eventResults.append(connection.fetchall()) 
+        eventResults.extend(connection.fetchall()) 
     return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
-
-
-
-#        request.method == "POST"
-#        name = request.form.get("str")
-#        sql = """SELECT * FROM members WHERE members.FirstName LIKE '%'+%s+'%' OR members.LastName LIKE '%'+%s+'%';"""
-#        parameters = (name,)
-#        connection.execute(sql, parameters)
-#        searchResults = connection.fetchall()
-#        return render_template("searchinfo.html", athlete = name, searchresults = searchResults)
         
         
