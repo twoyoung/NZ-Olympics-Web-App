@@ -94,7 +94,7 @@ def results():
                 FROM events
                 WHERE events.EventName LIKE %s;"""
         connection.execute(sql2, (parameters,))
-        eventResults.append(connection.fetchall())        
+        eventResults.append(connection.fetchall()) 
     return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
 
 
