@@ -73,7 +73,7 @@ def athleteinterface(name):
     return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo, eventinfo = eventInfo)
         
 @app.route("/admin")
-def admin(str):
+def admin():
     return render_template("admin.html")
 
 #@app.route("/admin/<str>", methods=["GET", "POST"])
