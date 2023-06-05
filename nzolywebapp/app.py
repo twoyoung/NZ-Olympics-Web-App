@@ -70,15 +70,15 @@ def athleteinterface(name):
     connection.execute(upcomingEvents, parameters)
     eventInfo = connection.fetchall()
     return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo, eventinfo = eventInfo)
-
+        
 @app.route("/admin")
-def admin():
+@app.route("/admin/<str>", methods=["GET", "POST"])
+def admin(str):
+    if not str:
         return render_template("admin.html")
-
-@app.route("/admin/<name>", methods=["GET", "POST"])
-def searchinfo():
-    if request.method == "POST":
-        name = request.form.get("name")
+    else:
+        request.method == "POST"
+        name = request.form.get("str")
         sql = """SELECT * FROM members WHERE members.FirstName LIKE '%'+%s+'%' OR members.LastName LIKE '%'+%s+'%';"""
         parameters = (name,)
         connection.execute(sql, parameters)
