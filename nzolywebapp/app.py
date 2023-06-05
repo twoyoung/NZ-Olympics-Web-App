@@ -46,14 +46,15 @@ def listevents():
 @app.route("/<name>")
 def athleteinterface(name):
     connection = getCursor()
-#    upcoming = """SELECT EventName, StageDate, StageName, Location 
-#           FROM events JOIN event_stage 
-#            ON events.EventID = event_stage.EventID 
-#            JOIN event_stage_results 
-#            ON event_stage_results.StageID = event_stage.StageID 
-#            JOIN members 
-#            ON members.MemberID = event_stage_results.MemberID 
-#            WHERE PointsScored >= PointsToQualify AND FirstName = "Zoi";"""
+    upcomingEvents = """SELECT EventName, StageDate, StageName, Location 
+                        FROM events 
+                        LEFT JOIN event_stage
+                        ON events.EventID = event_stage.EventID
+                        LEFT JOIN teams
+                        ON teams.TeamID = events.NZTeam
+                        LEFT JOIN members
+                        ON teams.TeamID = members.TeamID
+                        WHERE (StageID IS NULL OR StageID NOT IN (SELECT event_stage_results.StageID FROM event_stage_results)) AND members.FirstName = %s"""
     previousResults = """SELECT EventName, StageDate, StageName, Location, PointsScored
                         FROM event_stage_results
                         LEFT JOIN members
@@ -66,8 +67,22 @@ def athleteinterface(name):
     parameters = (name,)
     connection.execute(previousResults, parameters)
     athleteInfo = connection.fetchall()
-    return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo)
+    connection.execute(upcomingEvents, parameters)
+    eventInfo = connection.fetchall()
+    return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo, eventinfo = eventInfo)
 
 @app.route("/admin")
 def admin():
-    return render_template("admin.html")
+        return render_template("admin.html")
+
+@app.route("/admin/<name>", methods=["GET", "POST"])
+def searchinfo():
+    if request.method == "POST":
+        name = request.form.get("name")
+        sql = """SELECT * FROM members WHERE members.FirstName LIKE '%'+%s+'%' OR members.LastName LIKE '%'+%s+'%';"""
+        parameters = (name,)
+        connection.execute(sql, parameters)
+        searchResults = connection.fetchall()
+        return render_template("searchinfo.html", athlete = name, searchresults = searchResults)
+        
+        
