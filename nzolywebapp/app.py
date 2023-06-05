@@ -87,13 +87,14 @@ def results():
         sql1 = """SELECT * 
                 FROM members 
                 WHERE members.FirstName LIKE '%'+%s+'%' OR members.LastName LIKE '%'+%s+'%';"""
+        parameters1 = (item, item)
+        connection.execute(sql1, parameters1)
+        memberResults.append(connection.fetchall())
         sql2 = """SELECT *
                 FROM events
                 WHERE events.EventName LIKE '%'+%s+'%';"""
-        parameters = (item,)
-        connection.execute(sql1, parameters)
-        memberResults.append(connection.fetchall())
-        connection.execute(sql2, parameters)
+        parameters2 = (item,)
+        connection.execute(sql2, parameters2)
         eventResults.append(connection.fetchall())        
     return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
 
