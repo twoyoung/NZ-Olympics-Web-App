@@ -76,6 +76,7 @@ def athleteinterface(name):
 def adminpage():
     return render_template("admin.html")
 
+
 #@app.route("/admin/<str>", methods=["GET", "POST"])
 #def admin(str):
 #    if not str:
