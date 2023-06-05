@@ -1,9 +1,6 @@
 {% extends "base.html" %}
-
 {% block content %}
-        <section>
-
-           <form>    
+<form>    
 <!--           name="edit" id="edit" action="{{ url_for('searchinfo') }}" method="POST">
                <fieldset id="search">
                     <label for="membersorevents">Members or events:</label>
@@ -11,19 +8,18 @@
                     <button type="submit">Search</button>
                 </fieldset>
 -->
-                <fieldset id="members">
-                    <legend>Add new members and edit the details of existing members</legend>
-                </fieldset>
+    <fieldset id="members">
+        <legend>Add new members and edit the details of existing members</legend>
+    </fieldset>
                     
-                <fieldset id="events">
-                    <legend>Add new events and event_stages</legend>
-                </fieldset>
+    <fieldset id="events">
+        <legend>Add new events and event_stages</legend>
+    </fieldset>
 
-                <fieldset id="scores">
-                    <legend>Add scores for an event stage and position for a non-qualifying event stage</legend>
-                </fieldset>
+    <fieldset id="scores">
+        <legend>Add scores for an event stage and position for a non-qualifying event stage</legend>
+    </fieldset>
 
-            </form>
-        </section>
+</form>
 
 {% endblock %}
