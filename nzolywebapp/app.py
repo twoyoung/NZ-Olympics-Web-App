@@ -113,3 +113,4 @@ def add():
         parameters = (memberid, teamid, firstname, lastname, city, birthdate)
         connection = getCursor()
         connection.execute(sql, parameters)
+    return None
