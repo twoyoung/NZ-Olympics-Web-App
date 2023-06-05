@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-    <head>
-        <title>Admin</title>
-    </head>
-
-    <body>
-
+{% extends "base.html" %}
+{% block content %}
         <section>
-            <form name="edit" id="edit">
+            <form name="edit" id="edit" action="{{ url_for('searchinfo') }}" method="POST">
                 <fieldset id="search">
                     <label for="membersorevents">Members or events:</label>
-                    <input type="search" name="searchinfo" placeholder="members or events" />
-                    <button>Search</button>
+                    <input type="text" name="searchinfo" placeholder="members or events" />
+                    <button type="submit">Search</button>
                 </fieldset>
 
                 <fieldset id="members">
@@ -28,5 +23,4 @@
             </form>
         </section>
 
-    </body>
-</html>
+{% endblock %}
