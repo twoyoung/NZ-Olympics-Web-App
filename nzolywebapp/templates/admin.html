@@ -3,8 +3,10 @@
 {% block content %}
         <section>
 
-           <form name="edit" id="edit" action="{{ url_for('searchinfo') }}" method="POST">
- <!--               <fieldset id="search">
+           <form>
+           
+<!--           name="edit" id="edit" action="{{ url_for('searchinfo') }}" method="POST">
+               <fieldset id="search">
                     <label for="membersorevents">Members or events:</label>
                     <input type="text" name="searchinfo" placeholder="members or events" />
                     <button type="submit">Search</button>
