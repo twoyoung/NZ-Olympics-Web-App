@@ -11,12 +11,13 @@
     </fieldset>
 </form>
 
-<form action="{{ url_for('add') }}" method = "post">
+<form action="/admin/add" method = "POST">
     <fieldset id="addmember">
         <label for="MemberID">Member ID:</label>
         <input type="number" name="memberid" placeholder="0000" />
         <label for="TeamID">Team ID:</label>
         <select id="teamid" name="teamid">
+            {% for %}
         <label for="FirstName">First Name:</label>
         <input type="text" name="firstname" />
         <label for="LastName">Last Name:</label>
