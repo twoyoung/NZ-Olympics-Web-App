@@ -77,7 +77,7 @@ def admin():
     return render_template("admin.html")
 
 @app.route("/admin/results")
-def results():
+def search():
     name=request.args['searchinfo']
     str = name.split()
     memberResults = list()
@@ -101,7 +101,7 @@ def results():
         
         
 @app.route("/admin/add", methods = ['GET', 'POST'])
-def add():
+def addmembers():
     if request.method == 'POST':
         memberid = request.form.get('memberid')
         teamid = request.form.get('teamid')
