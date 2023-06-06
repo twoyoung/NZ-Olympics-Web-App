@@ -7,12 +7,13 @@
 {% block content %}
 <h4>Search results in members:</h4>
     <table class="table">
-        <tr><th>MemberID</th><th>TeamID</th><th>FirstName</th><th>LastName</th><th>City</th><th>Birthdate</th></tr>
+        <tr><th>Edit</th><th>MemberID</th><th>TeamID</th><th>FirstName</th><th>LastName</th><th>City</th><th>Birthdate</th></tr>
         {% for member in memberresults %}
             <tr>
-            {% for item in member %}
-                <td>{{item}}</td>
-            {% endfor %}
+                <td><a href="admin/edit/{{member[0]}}">Edit</a></td>
+                {% for item in member %}
+                    <td>{{item}}</td>
+                {% endfor %}
             </tr>
         {% endfor %}
     </table>
