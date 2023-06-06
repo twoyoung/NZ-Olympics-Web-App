@@ -109,7 +109,7 @@ def add():
         lastname = request.form.get('lastname')
         city = request.form.get('city')
         birthdate = request.form.get('birthdate')
-        sql = "INSERT INTO member VALUES (%s, %s, %s, %s, %s, %s);"
+        sql = "INSERT INTO members VALUES (%s, %s, %s, %s, %s, %s);"
         parameters = (memberid, teamid, firstname, lastname, city, birthdate)
         connection = getCursor()
         connection.execute(sql, parameters)
