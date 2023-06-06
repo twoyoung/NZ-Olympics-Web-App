@@ -1,0 +1,18 @@
+{% extends "admin.html" %}
+
+{% block content %}
+<form action="/admin/event/add" method = "POST">
+    <legend> Add New Events: </legend>
+        <label for="EventID">Event ID:</label>
+        <input type="text" name="eventid" />
+        <label for="EventName">Event Name:</label>
+        <input type="text" name="eventname" />
+        <label for="Sport">Sport:</label>
+        <input type="text" name="sport" />
+        <label for="TeamID">Team ID:</label>
+        <input type="text" name="teamid" />
+        <button type="submit">Add</button>
+        
+</form>
+
+{% endblock %}

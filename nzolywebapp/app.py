@@ -126,17 +126,16 @@ def addmembers():
 
 @app.route("/admin/members/add", methods=["POST"])
 def membersadd():
-    if request.method == 'POST':
-        memberid = request.form.get('memberid')
-        teamid = request.form.get('teamid')
-        firstname = request.form.get('firstname')
-        lastname = request.form.get('lastname')
-        city = request.form.get('city')
-        birthdate = request.form.get('birthdate')
-        sql = "INSERT INTO members VALUES (%s, %s, %s, %s, %s, %s);"
-        parameters = (memberid, teamid, firstname, lastname, city, birthdate)
-        connection = getCursor()
-        connection.execute(sql, parameters)
+    memberid = request.form.get('memberid')
+    teamid = request.form.get('teamid')
+    firstname = request.form.get('firstname')
+    lastname = request.form.get('lastname')
+    city = request.form.get('city')
+    birthdate = request.form.get('birthdate')
+    sql = "INSERT INTO members VALUES (%s, %s, %s, %s, %s, %s);"
+    parameters = (memberid, teamid, firstname, lastname, city, birthdate)
+    connection = getCursor()
+    connection.execute(sql, parameters)
     return redirect("/admin/listmembers")
 
 @app.route("/admin/members/edit/<memberid>")
@@ -167,11 +166,22 @@ def updatemember():
     connection.execute(sql, parameters)
     return redirect("/admin/listmembers")
 
-   
-
-@app.route("/admin/addevents", methods = ['POST'])
+@app.route("/admin/addevents")
 def addevents():
-    return None
+    return render_template("addevents.html")
+
+@app.route("admin/event/add", methods = ['POST'])
+def eventadd():
+    eventid = request.form.get('eventid')
+    eventname = request.form.get('eventname')
+    sport = request.form.get('sport')
+    teamid = request.form.get('teamid')
+    sql = "INSERT INTO events VALUES (%s, %s, %s, %s);"
+    parameters = (eventid, eventname, sport, teamid)
+    connection = getCursor()
+    connection.execute(sql, parameters)
+    return redirect("/admin/listevents")
+
 
 @app.route("/admin/addscores", methods = ['POST'])
 def addscores():
