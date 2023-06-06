@@ -153,19 +153,18 @@ def editmember(memberid):
 
 @app.route("/admin/updatemembers", methods=["POST"])
 def updatemember():
-    if request.method == 'POST':
-        memberid = request.form.get('memberid')
-        teamid = request.form.get('teamid')
-        firstname = request.form.get('firstname')
-        lastname = request.form.get('lastname')
-        city = request.form.get('city')
-        birthdate = request.form.get('birthdate')
-        sql = '''UPDATE members 
-                SET TeamID = %s, FirstName = %s, LastName = %s, City = %s, Birthdate= %s
-                WHERE MemberID = memberid;'''
-        parameters = (teamid, firstname, lastname, city, birthdate)
-        connection = getCursor()
-        connection.execute(sql, parameters)
+    memberid = request.form.get('memberid')
+    teamid = request.form.get('teamid')
+    firstname = request.form.get('firstname')
+    lastname = request.form.get('lastname')
+    city = request.form.get('city')
+    birthdate = request.form.get('birthdate')
+    sql = '''UPDATE members 
+            SET TeamID = %s, FirstName = %s, LastName = %s, City = %s, Birthdate= %s
+            WHERE MemberID = %s;'''
+    parameters = (teamid, firstname, lastname, city, birthdate, memberid)
+    connection = getCursor()
+    connection.execute(sql, parameters)
     return redirect("/admin/listmembers")
 
    
