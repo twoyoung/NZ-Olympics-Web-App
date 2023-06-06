@@ -76,7 +76,7 @@ def athleteinterface(name):
 def admin():
     return render_template("admin.html")
 
-@app.route("admin/listmembers")
+@app.route("/admin/listmembers")
 def adminlistmembers():
     connection = getCursor()
     connection.execute("SELECT members.MemberID, teams.TeamName, members.FirstName, members.LastName, members.City, members.Birthdate FROM members JOIN teams on members.TeamID = teams.TeamID;")
@@ -85,7 +85,7 @@ def adminlistmembers():
     return render_template("adminmemberlist.html", memberlist = memberList)
 
 
-@app.route("admin/listevents")
+@app.route("/admin/listevents")
 def adminlistevents():
     connection = getCursor()
     connection.execute("SELECT * FROM events;")
@@ -137,7 +137,7 @@ def membersadd():
         parameters = (memberid, teamid, firstname, lastname, city, birthdate)
         connection = getCursor()
         connection.execute(sql, parameters)
-    return redirect("/listmembers")
+    return redirect("/admin/listmembers")
    
 
 @app.route("/admin/addevents", methods = ['POST'])
