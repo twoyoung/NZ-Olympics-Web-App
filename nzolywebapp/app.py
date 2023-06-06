@@ -76,6 +76,22 @@ def athleteinterface(name):
 def admin():
     return render_template("admin.html")
 
+@app.route("admin/listmembers")
+def adminlistmembers():
+    connection = getCursor()
+    connection.execute("SELECT members.MemberID, teams.TeamName, members.FirstName, members.LastName, members.City, members.Birthdate FROM members JOIN teams on members.TeamID = teams.TeamID;")
+    memberList = connection.fetchall()
+    # print(memberList)
+    return render_template("adminmemberlist.html", memberlist = memberList)
+
+
+@app.route("admin/listevents")
+def adminlistevents():
+    connection = getCursor()
+    connection.execute("SELECT * FROM events;")
+    eventList = connection.fetchall()
+    return render_template("admineventlist.html", eventlist = eventList)
+
 @app.route("/admin/results")
 def search():
     name=request.args['searchinfo']
