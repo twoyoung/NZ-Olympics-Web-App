@@ -8,9 +8,9 @@
     <tr><th>Edit</th></th><th>Member ID</th><th>Team Name</th><th>First Name</th><th>Last Name</th><th>City</th><th>Birthdate</th></tr>
     {% for member in memberlist %}
         <tr>
+            <td><a href="admin/members/edit/{{member[0]}}">Edit</a></td>
             {% for entry in member %}
                 <td>
-                    <td><a href="admin/members/edit/{{member[0]}}">Edit</a></td>
                     {% if loop.index0 != 2 %}
                         {{entry}}
                     {% else %}
