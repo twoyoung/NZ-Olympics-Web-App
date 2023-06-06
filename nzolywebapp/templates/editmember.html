@@ -1,0 +1,24 @@
+{% extends "admin.html" %}
+
+{% block content %}
+<form action="/admin/updatemembers" method = "POST">
+        <label for="MemberID">Member ID (read only):</label>
+        <input type="text" name="memberid" value="{{membertoedit[0]}}" readonly />
+        <label for="TeamID">Team ID:</label>
+        <select id="teamid" name="teamid">
+            {% for entry in teamid %}
+                <option value="{{membertoedit[1]}}">{{entry[0]}}</option>
+            {% endfor %}
+        </select>
+        <label for="FirstName">First Name:</label>
+        <input type="text" name="firstname" value="{{membertoedit[2]}}"/>
+        <label for="LastName">Last Name:</label>
+        <input type="text" name="lastname" value="{{membertoedit[3]}}"/>
+        <label for="city">City:</label>
+        <input type="text" name="city" value="{{membertoedit[4]}}"/>
+        <label for="Birthdate">Birthdate:</label>
+        <input type="date" name="birthdate" value="{{membertoedit[5]}}"/>
+        <button type="submit">Add</button>
+</form>
+
+{% endblock %}

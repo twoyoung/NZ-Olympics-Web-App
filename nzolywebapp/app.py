@@ -138,6 +138,31 @@ def membersadd():
         connection = getCursor()
         connection.execute(sql, parameters)
     return redirect("/admin/listmembers")
+
+@app.route("/admin/members/edit/<memberid>")
+def editmember(memberid):
+    connection = getCursor()
+    connection.execute("SELECT * FROM members WHERE MemberID = %s", (memberid))
+    membertoedit = connection.fetchall()
+    return render_template("editmember.html", membertoedit=membertoedit)
+
+@app.route("/admin/updatemembers", methods=["POST"])
+def updatemember():
+    if request.method == 'POST':
+        memberid = request.form.get('memberid')
+        teamid = request.form.get('teamid')
+        firstname = request.form.get('firstname')
+        lastname = request.form.get('lastname')
+        city = request.form.get('city')
+        birthdate = request.form.get('birthdate')
+        sql = '''UPDATE members 
+                SET TeamID = %s, FirstName = %s, LastName = %s, City = %s, Birthdate= %s
+                WHERE MemberID = memberid;'''
+        parameters = (teamid, firstname, lastname, city, birthdate)
+        connection = getCursor()
+        connection.execute(sql, parameters)
+    return redirect("/admin/listmembers")
+
    
 
 @app.route("/admin/addevents", methods = ['POST'])
