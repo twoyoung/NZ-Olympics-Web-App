@@ -203,7 +203,7 @@ def eventstageadd():
     stagedate = request.form.get('stagedate')
     qualifying = request.form.get('qualifying')
     pointstoqualify = request.form.get('pointstoqualify')
-    sql = "INSERT INTO events VALUES (%s, %s, %s, %s, %s, %s, %s);"
+    sql = "INSERT INTO event_stage VALUES (%s, %s, %s, %s, %s, %s, %s);"
     parameters = (stageid, stagename, eventid, location, stagedate, qualifying, pointstoqualify)
     connection = getCursor()
     connection.execute(sql, parameters)
