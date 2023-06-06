@@ -100,7 +100,7 @@ def search():
     return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
         
         
-@app.route("/admin/add", methods = ['GET', 'POST'])
+@app.route("/admin/addmembers", methods = ['GET', 'POST'])
 def addmembers():
     if request.method == 'POST':
         memberid = request.form.get('memberid')
@@ -113,4 +113,16 @@ def addmembers():
         parameters = (memberid, teamid, firstname, lastname, city, birthdate)
         connection = getCursor()
         connection.execute(sql, parameters)
+    return None
+
+@app.route("/admin/addevents", methods = ['POST'])
+def addevents():
+    return None
+
+@app.route("/admin/addscores", methods = ['POST'])
+def addscores():
+    return None
+
+@app.route("/admin/showreports", methods = ['POST'])
+def showreports():
     return None
