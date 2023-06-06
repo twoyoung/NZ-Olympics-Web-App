@@ -170,7 +170,7 @@ def updatemember():
 def addevents():
     return render_template("addevents.html")
 
-@app.route("admin/event/add", methods = ['POST'])
+@app.route("/admin/event/add", methods = ['POST'])
 def eventadd():
     eventid = request.form.get('eventid')
     eventname = request.form.get('eventname')
