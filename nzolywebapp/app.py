@@ -103,12 +103,12 @@ def results():
 @app.route("/admin/add", methods = ['GET', 'POST'])
 def add():
     if request.method == 'POST':
-        memberid = request.args['memberid']
-        teamid = request.args['teamid']
-        firstname = request.args['firstname']
-        lastname = request.args['lastname']
-        city = request.args['city']
-        birthdate = request.args['birthdate']
+        memberid = request.form.get('memberid')
+        teamid = request.form.get('teamid')
+        firstname = request.form.get('firstname')
+        lastname = request.form.get('lastname')
+        city = request.form.get('city')
+        birthdate = request.form.get('birthdate')
         sql = "INSERT INTO member VALUES (%s, %s, %s, %s, %s, %s);"
         parameters = (memberid, teamid, firstname, lastname, city, birthdate)
         connection = getCursor()

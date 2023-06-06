@@ -11,7 +11,7 @@
     </fieldset>
 </form>
 
-<form method="post" action="/admin/add" >
+<form action="{{ url_for('add') }}" method = "post">
     <fieldset id="addmember">
         <label for="MemberID">Member ID:</label>
         <input type="number" name="memberid" placeholder="0000" />
