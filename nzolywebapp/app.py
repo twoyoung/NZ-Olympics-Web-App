@@ -100,20 +100,14 @@ def search():
     return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
         
         
-@app.route("/admin/addmembers", methods = ['GET', 'POST'])
+@app.route("/admin/addmembers")
 def addmembers():
-    if request.method == 'POST':
-        memberid = request.form.get('memberid')
-        teamid = request.form.get('teamid')
-        firstname = request.form.get('firstname')
-        lastname = request.form.get('lastname')
-        city = request.form.get('city')
-        birthdate = request.form.get('birthdate')
-        sql = "INSERT INTO members VALUES (%s, %s, %s, %s, %s, %s);"
-        parameters = (memberid, teamid, firstname, lastname, city, birthdate)
-        connection = getCursor()
-        connection.execute(sql, parameters)
-    return None
+    connection = getCursor()
+    sql = """SELECT TeamID FROM teams;"""
+    connection.execute(sql)
+    teamID = connection.fetchall()
+    return render_template("addmembers.html", teamid = teamID)
+   
 
 @app.route("/admin/addevents", methods = ['POST'])
 def addevents():
