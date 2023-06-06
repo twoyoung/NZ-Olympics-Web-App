@@ -194,7 +194,7 @@ def addeventstages():
     eventID = connection.fetchall()
     return render_template("addeventstage.html", eventid=eventID)
 
-@app.route("/admin/eventstage/add/")
+@app.route("/admin/eventstage/add", methods = ['POST'])
 def eventstageadd():
     stageid = request.form.get('stageid')
     stagename = request.form.get('stagename')
