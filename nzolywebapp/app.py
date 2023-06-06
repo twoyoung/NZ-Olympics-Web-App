@@ -168,7 +168,11 @@ def updatemember():
 
 @app.route("/admin/addevents")
 def addevents():
-    return render_template("addevents.html")
+    connection = getCursor()
+    sql = """SELECT TeamID FROM teams;"""
+    connection.execute(sql)
+    teamID = connection.fetchall()
+    return render_template("addevents.html", teamid=teamID)
 
 @app.route("/admin/event/add", methods = ['POST'])
 def eventadd():
