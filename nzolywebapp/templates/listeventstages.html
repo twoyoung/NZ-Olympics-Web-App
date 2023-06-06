@@ -1,0 +1,19 @@
+{% extends "admin.html" %}
+{% block content %}
+<!-- code in here to display a list of events -->
+<!-- eventlist is the variable passed in containing list of loans -->
+<h2>Event Stage List</h2>
+<h3>A list of all NZ Olympic Team event Stages</h3>
+
+<table class="table">
+    <tr><th>Stage ID</th><th>Stage Name</th><th>Event ID</th><th>Location</th><th>Stage Date</th><th>Qualifying</th><th>Points To Qualify</th></tr>
+    {% for stage in event_stage %}
+        <tr>
+            {% for entry in stage %}
+                <td>{{entry}}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

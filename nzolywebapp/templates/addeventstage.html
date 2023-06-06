@@ -1,12 +1,17 @@
 {% extends "admin.html" %}
 
 {% block content %}
-<form action="/admin/event/add" method = "POST">
+<form action="/admin/eventstage/add" method = "POST">
     <legend>Add New Event Stage:</legend>
         <label for="StageID">Stage ID:</label>
         <input type="text" name="stageid" />
         <label for="StageName">Stage Name:</label>
         <input type="text" name="stagename" />
+        <select id="eventid" name="eventid">
+            {% for entry in eventid %}
+                <option value="{{entry[0]}}">{{entry[0]}}</option>
+            {% endfor %}
+        </select>
         <label for="Location">Location:</label>
         <input type="text" name="location" />
         <label for="StageDate">Stage Date:</label>
@@ -14,7 +19,7 @@
         <label for="Qualifying">Qualifying:</label>
         <input type="number" name="qualifying" />
         <label for="PointsToQualify">Points to qualify:</label>
-        <input type="date" name="stagedate" />
+        <input type="text" name="pointstoquality" />
         <button type="submit">Add</button>
 </form>
 

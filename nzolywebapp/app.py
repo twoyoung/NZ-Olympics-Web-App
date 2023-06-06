@@ -186,6 +186,29 @@ def eventadd():
     connection.execute(sql, parameters)
     return redirect("/admin/listevents")
 
+@app.route("/admin/addeventstage")
+def addeventstages():
+    connection = getCursor()
+    sql = """SELECT EventID FROM events;"""
+    connection.execute(sql)
+    eventID = connection.fetchall()
+    return render_template("addeventstage.html", eventid=eventID)
+
+@app.route("/admin/eventstage/add/")
+def eventstageadd():
+    stageid = request.form.get('stageid')
+    stagename = request.form.get('stagename')
+    eventid = request.form.get('eventid')
+    location = request.form.get('location')
+    stagedate = request.form.get('stagedate')
+    qualifying = request.form.get('qualifying')
+    pointstoqualify = request.form.get('pointstoqualify')
+    sql = "INSERT INTO events VALUES (%s, %s, %s, %s, %s, %s, %s);"
+    parameters = (stageid, stagename, eventid, location, stagedate, qualifying, pointstoqualify)
+    connection = getCursor()
+    connection.execute(sql, parameters)
+    return redirect("/admin/listeventstages.html")
+
 
 @app.route("/admin/addscores", methods = ['POST'])
 def addscores():

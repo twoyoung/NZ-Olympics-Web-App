@@ -12,10 +12,11 @@
             <ul>
                 <li><a href="{{ url_for('adminlistmembers') }}">Member List</a></li>
                 <li><a href="{{ url_for('adminlistevents') }}">Event List</a></li>
-                <li><a href="{{ url_for('addmembers') }}">Add new members</a></li>
-                <li><a href="{{ url_for('addevents') }}">Add new events and event_stages</a></li>
-                <li><a href="{{ url_for('addscores') }}">Add scores and position</a></li>
-                <li><a href="{{ url_for('showreports') }}">Show reports</a></li>
+                <li><a href="{{ url_for('addmembers') }}">Add New Members</a></li>
+                <li><a href="{{ url_for('addevents') }}">Add New Events</a></li>
+                <li><a href="{{ url_for('addeventstages') }}">Add New Event Stages </a></li>
+                <li><a href="{{ url_for('addscores') }}">Add Scores and Position</a></li>
+                <li><a href="{{ url_for('showreports') }}">Show Reports</a></li>
             </ul>
         </nav>
         <form action="/admin/results" method="get">
