@@ -207,7 +207,7 @@ def eventstageadd():
     parameters = (stageid, stagename, eventid, location, stagedate, qualifying, pointstoqualify)
     connection = getCursor()
     connection.execute(sql, parameters)
-    return redirect("/admin/listeventstages.html")
+    return redirect("listeventstages.html")
 
 
 @app.route("/admin/addscores", methods = ['POST'])
