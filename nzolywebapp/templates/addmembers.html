@@ -2,9 +2,8 @@
 
 {% block content %}
 <form action="/admin/members/add" method = "POST">
-    <fieldset id="addmember">
         <label for="MemberID">Member ID:</label>
-        <input type="number" name="memberid" placeholder="0000" />
+        <input type="text" name="memberid" placeholder="0000" />
         <label for="TeamID">Team ID:</label>
         <select id="teamid" name="teamid">
             {% for entry in teamid %}
@@ -20,7 +19,6 @@
         <label for="Birthdate">Birthdate:</label>
         <input type="date" name="birthdate" />
         <button type="submit">Add</button>
-    </fieldset>
 </form>
 
 {% endblock %}
