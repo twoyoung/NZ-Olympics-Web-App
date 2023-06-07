@@ -249,6 +249,39 @@ def scoreadd():
     connection.execute(sql, parameters)
     return redirect("/admin/listscores")
 
-@app.route("/admin/showreports", methods = ['POST'])
-def showreports():
-    return None
+@app.route("/admin/showmedals")
+def showmedals():
+    connection = getCursor()
+    connection.execute("SELECT COUNT(Position) FROM event_stage_results WHERE Position > 0 AND Position < 4;")
+    num_medals = connection.fetchall()
+    connection.execute("SELECT COUNT(Position) FROM event_stage_results WHERE Position=1")
+    num_gold = connection.fetchall()
+    connection.execute("SELECT COUNT(Position) FROM event_stage_results WHERE Position=2")
+    num_silver = connection.fetchall()
+    connection.execute("SELECT COUNT(Position) FROM event_stage_results WHERE Position=3")
+    num_bronze = connection.fetchall()
+    sql = '''SELECT FirstName, LastName, TeamID
+            FROM event_stage_results
+            JOIN members
+            ON members.MemberID = event_stage_results.MemberID
+            WHERE Position=1
+            ORDER BY TeamID, LastName, Firstname'''
+    connection.execute(sql)
+    gold_members = connection.fetchall()
+    sql = '''SELECT FirstName, LastName, TeamID
+            FROM event_stage_results
+            JOIN members
+            ON members.MemberID = event_stage_results.MemberID
+            WHERE Position=2
+            ORDER BY TeamID, LastName, Firstname'''
+    connection.execute(sql)
+    silver_members = connection.fetchall()
+    sql = '''SELECT FirstName, LastName, TeamID
+            FROM event_stage_results
+            JOIN members
+            ON members.MemberID = event_stage_results.MemberID
+            WHERE Position=3
+            ORDER BY TeamID, LastName, Firstname'''
+    connection.execute(sql)
+    bronze_members = connection.fetchall()
+    return render_template("showmedals.html", num_medals=num_medals, num_gold=num_gold, num_silver=num_silver, num_bronze=num_bronze, gold_members=gold_members, silver_members=silver_members, bronze_members=bronze_members)
