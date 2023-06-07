@@ -7,7 +7,7 @@
 
 <table class="table">
     <tr><th>Stage ID</th><th>Stage Name</th><th>Event ID</th><th>Location</th><th>Stage Date</th><th>Qualifying</th><th>Points To Qualify</th></tr>
-    {% for stage in event_stage %}
+    {% for stage in stagelist %}
         <tr>
             {% for entry in stage %}
                 <td>{{entry}}</td>

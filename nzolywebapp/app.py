@@ -92,6 +92,13 @@ def adminlistevents():
     eventList = connection.fetchall()
     return render_template("admineventlist.html", eventlist = eventList)
 
+@app.route("/admin/liststages")
+def listeventstages():
+    connection = getCursor()
+    connection.execute("SELECT * FROM event_stage;")
+    stageList = connection.fetchall()
+    return render_template("tagelist.html", stagelist = stageList)
+
 @app.route("/admin/results")
 def search():
     name=request.args['searchinfo']
@@ -186,16 +193,16 @@ def eventadd():
     connection.execute(sql, parameters)
     return redirect("/admin/listevents")
 
-@app.route("/admin/addeventstage")
-def addeventstages():
+@app.route("/admin/addstage")
+def addstage():
     connection = getCursor()
     sql = """SELECT EventID FROM events;"""
     connection.execute(sql)
     eventID = connection.fetchall()
-    return render_template("addeventstage.html", eventid=eventID)
+    return render_template("addstage.html", eventid=eventID)
 
-@app.route("/admin/eventstage/add", methods = ['POST'])
-def eventstageadd():
+@app.route("/admin/stage/add", methods = ['POST'])
+def stageadd():
     stageid = request.form.get('stageid')
     stagename = request.form.get('stagename')
     eventid = request.form.get('eventid')
@@ -207,7 +214,7 @@ def eventstageadd():
     parameters = (stageid, stagename, eventid, location, stagedate, qualifying, pointstoqualify)
     connection = getCursor()
     connection.execute(sql, parameters)
-    return redirect("listeventstages.html")
+    return redirect("/admin/liststages")
 
 
 @app.route("/admin/addscores", methods = ['POST'])
