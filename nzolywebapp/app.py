@@ -99,6 +99,13 @@ def liststages():
     stageList = connection.fetchall()
     return render_template("stagelist.html", stagelist = stageList)
 
+@app.route("/admin/listscores")
+def listscores():
+    connection = getCursor()
+    connection.execute("SELECT * FROM event_stage_results;")
+    scorelist = connection.fetchall()
+    return render_template("listscores.html", scorelist = scorelist)
+
 @app.route("/admin/results")
 def search():
     name=request.args['searchinfo']
@@ -217,9 +224,27 @@ def stageadd():
     return redirect("/admin/liststages")
 
 
-@app.route("/admin/addscores", methods = ['POST'])
+@app.route("/admin/addscores")
 def addscores():
-    return None
+    connection = getCursor()
+    connection.execute("SELECT StageID, StageName FROM event_stage;")
+    stageidname = connection.fetchall()
+    connection.execute("SELECT MemberID FROM members;")
+    memberid = connection.fetchall()
+    return render_template("addscores.html", stageidname = stageidname, memberid=memberid)
+
+@app.route("/admin/score/add", methods = ['POST'])
+def scoreadd():
+    resultid = request.form.get('resultid')
+    stageid = request.form.get('stageid')
+    memberid = request.form.get('memberid')
+    pointsscored = request.form.get('pointsscored')
+    position = request.form.get('position')
+    sql = "INSERT INTO event_stage_results VALUES (%s, %s, %s, %s, %s);"
+    parameters = (resultid, stageid, memberid, pointsscored, position)
+    connection = getCursor()
+    connection.execute(sql, parameters)
+    return redirect("/admin/listscores")
 
 @app.route("/admin/showreports", methods = ['POST'])
 def showreports():

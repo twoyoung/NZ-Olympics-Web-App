@@ -1,0 +1,27 @@
+{% extends "admin.html" %}
+
+{% block content %}
+<form action="/admin/score/add" method = "POST">
+    <legend>Add Score and Position:</legend>
+        <label for="ResultID">Result ID:</label>
+        <input type="text" name="resultid" />
+        <label for="StageID">Stage ID:</label>
+        <select id="stageid" name="stageid">
+            {% for entry in stageidname %}
+                <option value="{{entry[0]}}">{{entry[0]}}</option>
+            {% endfor %}
+        </select>
+        <label for="MemberID">Member ID:</label>
+        <select id="memberid" name="memberid">
+            {% for entry in memberid %}
+                <option value="{{entry[0]}}">{{entry[0]}}</option>
+            {% endfor %}
+        </select>
+        <label for="PointsScored">Points Scored:</label>
+        <input type="text" name="pointsscored" />
+        <label for="Position">Position</label>
+        <input type="number" name="position" />
+        <button type="submit">Add</button>
+</form>
+
+{% endblock %}
