@@ -227,11 +227,14 @@ def stageadd():
 @app.route("/admin/addscores")
 def addscores():
     connection = getCursor()
-    connection.execute("SELECT StageID, StageName FROM event_stage;")
-    stageidname = connection.fetchall()
+    sql = '''SELECT StageID 
+            FROM event_stage 
+            WHERE StageID NOT IN (SELECT event_stage_results.StageID FROM event_stage_results);'''  
+    connection.execute(sql)
+    stageid = connection.fetchall()
     connection.execute("SELECT MemberID FROM members;")
     memberid = connection.fetchall()
-    return render_template("addscores.html", stageidname = stageidname, memberid=memberid)
+    return render_template("addscores.html", stageid = stageid, memberid=memberid)
 
 @app.route("/admin/score/add", methods = ['POST'])
 def scoreadd():

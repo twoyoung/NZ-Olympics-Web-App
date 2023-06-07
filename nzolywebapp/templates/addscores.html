@@ -7,9 +7,11 @@
         <input type="text" name="resultid" />
         <label for="StageID">Stage ID:</label>
         <select id="stageid" name="stageid">
-            {% for entry in stageidname %}
-                <option value="{{entry[0]}}">{{entry[0]}}</option>
-            {% endfor %}
+            {% if stageid %}
+                {% for entry in stageid %}
+                    <option value="{{entry[0]}}">{{entry[0]}}</option>
+                {% endfor %}
+            {% endif %}
         </select>
         <label for="MemberID">Member ID:</label>
         <select id="memberid" name="memberid">
