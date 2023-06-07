@@ -93,11 +93,11 @@ def adminlistevents():
     return render_template("admineventlist.html", eventlist = eventList)
 
 @app.route("/admin/liststages")
-def listeventstages():
+def liststages():
     connection = getCursor()
     connection.execute("SELECT * FROM event_stage;")
     stageList = connection.fetchall()
-    return render_template("tagelist.html", stagelist = stageList)
+    return render_template("stagelist.html", stagelist = stageList)
 
 @app.route("/admin/results")
 def search():
