@@ -2,8 +2,8 @@
 
 {% block content %}
 
-<h2>Total medals: {{ num_medals }}</h2>
-<h3>Gold medals: {{ num_gold }}</h3>
+<h2>Total medals: {{ num_medals[0][0] }}</h2>
+<h3>Gold medals: {{ num_gold[0][0] }}</h3>
 
 <table class="table">
     <tr><th>First Name</th><th>Last Name</th><th>Team ID</th></tr>
@@ -16,7 +16,7 @@
     {% endfor %}
 </table>
 
-<h3>Silver medals: {{ num_silver }}</h3>
+<h3>Silver medals: {{ num_silver[0][0] }}</h3>
 
 <table class="table">
     <tr><th>First Name</th><th>Last Name</th><th>Team ID</th></tr>
@@ -29,7 +29,7 @@
     {% endfor %}
 </table>
 
-<h3>Bronze medals: {{ num_bronze }}</h3>
+<h3>Bronze medals: {{ num_bronze[0][0] }}</h3>
 
 <table class="table">
     <tr><th>First Name</th><th>Last Name</th><th>Team ID</th></tr>
