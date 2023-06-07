@@ -193,13 +193,13 @@ def eventadd():
     connection.execute(sql, parameters)
     return redirect("/admin/listevents")
 
-@app.route("/admin/addstage")
-def addstage():
+@app.route("/admin/addstages")
+def addstages():
     connection = getCursor()
     sql = """SELECT EventID FROM events;"""
     connection.execute(sql)
     eventID = connection.fetchall()
-    return render_template("addstage.html", eventid=eventID)
+    return render_template("addstages.html", eventid=eventID)
 
 @app.route("/admin/stage/add", methods = ['POST'])
 def stageadd():
