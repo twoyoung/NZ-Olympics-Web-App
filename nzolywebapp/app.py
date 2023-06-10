@@ -102,7 +102,15 @@ def liststages():
 @app.route("/admin/listscores")
 def listscores():
     connection = getCursor()
-    connection.execute("SELECT * FROM event_stage_results;")
+    sql = '''SELECT ResultID, EventName, StageName, event_stage_results.StageID, FirstName, LastName, event_stage_results.MemberID, PointsScored, Position
+            FROM event_stage_results
+            LEFT JOIN event_stage
+            ON event_stage.StageID = event_stage_results.StageID
+            LEFT JOIN events
+            ON events.EventID = event_stage.EventID
+            LEFT JOIN members
+            ON members.MemberID = event_stage_results.MemberID;'''
+    connection.execute(sql)
     scorelist = connection.fetchall()
     return render_template("listscores.html", scorelist = scorelist)
 
