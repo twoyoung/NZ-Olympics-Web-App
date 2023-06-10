@@ -23,13 +23,17 @@ COMP636 Web App
   | --- | --- | --- | --- | --- |
   | @app.route("/admin") | admin() | admin.html | none | - |
   - search members or/and events using partial match
+  
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/results") | search()| results.html| `name`, `memberresults`, `eventresults` | - |
   - add new members
-  @app.route("/admin/addmembers")
-  @app.route("/admin/members/add", methods=["POST"])
-  | @app.route("/admin/listmembers") | adminlistmembers() | adminmemberlist.html | memberlist | - |
+  
+  | route | function | template | data passed | explanation |
+  | --- | --- | --- | --- | --- |
+  | @app.route("/admin/addmembers") | addmembers() | addmembers.html | `teamid` | - | 
+  | @app.route("/admin/members/add", methods=["POST"]) | membersadd() | - | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | insert the data into database |
+  | @app.route("/admin/listmembers") | adminlistmembers() | adminmemberlist.html | `memberlist` | display the updated member list |
   - edit existing members
   @app.route("/admin/members/edit/<memberid>")
   @app.route("/admin/updatemembers", methods=["POST"])
