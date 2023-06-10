@@ -27,13 +27,13 @@
             <td>{{entry[2]}}</td>
             {% if entry[3] == 1 and entry[4] >= entry[5] %}
                 <td>"Q"</td>
-            {% eif entry[3] == 1 and entry[5] > entry[4] %}
+            {% elif entry[3] == 1 and entry[5] > entry[4] %}
                 <td>"Not Qualified"</td>
-            {% eif entry[3] == 0 and entry[6] == 1 %}
+            {% elif entry[3] == 0 and entry[6] == 1 %}
                 <td>"Gold"</td>
-            {% eif entry[3] == 0 and entry[6] == 2 %}
+            {% elif entry[3] == 0 and entry[6] == 2 %}
                 <td>"Silver"</td>
-            {% eif entry[3] == 0 and entry[6] == 3 %}
+            {% elif entry[3] == 0 and entry[6] == 3 %}
                 <td>"Bronze"</td>
             {% endif %}
         </tr>
