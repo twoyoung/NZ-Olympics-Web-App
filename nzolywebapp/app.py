@@ -243,7 +243,7 @@ def scoreadd():
     memberid = request.form.get('member')
     pointsscored = request.form.get('pointsscored')
     position = request.form.get('position')
-    if position == 0:
+    if position == "" or position == "0":
         position = None
     sql = "INSERT INTO event_stage_results (StageID, MemberID, PointsScored, Position) VALUES (%s, %s, %s, %s);"
     parameters = (stageid, memberid, pointsscored, position)
