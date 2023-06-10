@@ -5,11 +5,12 @@ COMP636 Web App
 
 - the default / interface
   - the base page
+  
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/") | home() | base.html | none | - |
-  @app.route("/listmembers")
-  @app.route("/listevents")
+  | @app.route("/listmembers") | listmembers() | memberlist.html | `memberlist` | - |
+  | @app.route("/listevents") | listevents() | eventlist.html | `eventlist` | - |
   - the athlete interface
   @app.route("/listmembers/<name>")
 - the admin interface
