@@ -216,10 +216,10 @@ def addstages():
 
 @app.route("/admin/stage/add", methods = ['POST'])
 def stageadd():
-    connection = getCursor(buffered=True)
+    connection = getCursor()
     eventname = request.form.get('eventname')
     connection.execute("SELECT EventID FROM events WHERE EventName = %s", (eventname,))
-    eventid = connection.fetchone()[0]
+    eventid = connection.fetchone()
     stagename = request.form.get('stagename').lower()
     location = request.form.get('location')
     stagedate = request.form.get('stagedate')
@@ -229,7 +229,7 @@ def stageadd():
         qualifying = 1
     pointstoqualify = request.form.get('pointstoqualify')
     sql = "INSERT INTO event_stage (StageName, EventID, Location, StageDate, Qualifying, PointsToQualify) VALUES (%s, %s, %s, %s, %s, %s);"
-    parameters = (stagename.capitalize(), eventid, location, stagedate, qualifying, pointstoqualify)
+    parameters = (stagename.capitalize(), eventid[0], location, stagedate, qualifying, pointstoqualify)
     connection.execute(sql, parameters)
     return redirect("/admin/liststages")
 
