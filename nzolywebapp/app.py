@@ -39,7 +39,7 @@ def listmembers():
 @app.route("/listevents")
 def listevents():
     connection = getCursor()
-    connection.execute("SELECT EventID, EventName, Sport, TeamName, NZTeam FROM events LEFT JOIN teams ON events.NZTeam = team.TeamID;")
+    connection.execute("SELECT * FROM events;")
     eventList = connection.fetchall()
     return render_template("eventlist.html", eventlist = eventList)
 
@@ -88,7 +88,7 @@ def adminlistmembers():
 @app.route("/admin/listevents")
 def adminlistevents():
     connection = getCursor()
-    connection.execute("SELECT * FROM events;")
+    connection.execute("SELECT EventID, EventName, Sport, TeamName, NZTeam FROM events LEFT JOIN teams ON events.NZTeam = team.TeamID;")
     eventList = connection.fetchall()
     return render_template("admineventlist.html", eventlist = eventList)
 
