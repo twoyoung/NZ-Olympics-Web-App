@@ -17,12 +17,12 @@ COMP636 Web App
   | --- | --- | --- | --- | --- |
   | @app.route("/listmembers/<name>") | athleteinterface(name) | athleteinterface.html | `name`, `athleteinfo`, `eventinfo` | - | 
 - **the admin interface**
-  - ** the admin base page **
+  - **the admin base page**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin") | admin() | admin.html | none | - |
-  - ** search members or/and events using partial match **
+  - **search members or/and events using partial match**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
