@@ -32,7 +32,7 @@ COMP636 Web App
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/addmembers") | addmembers() | addmembers.html | `teamid` | addmembers() pass the available team id in database (`teamid`) to addmembers.html to display the form with limited team id choice for users to input the data | 
-  | @app.route("/admin/members/add", methods=["POST"]) | membersadd() | - | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | admembers.html pass the input data to membersadd(), membersadd() then insert the data into database |
+  | @app.route("/admin/members/add", methods=["POST"]) | membersadd() | addmembers.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | admembers.html pass the input data to membersadd(), membersadd() then insert the data into database |
   | @app.route("/admin/listmembers") | adminlistmembers() | adminmemberlist.html | `memberlist` | display the updated member list |
   - edit existing members
   @app.route("/admin/members/edit/<memberid>")
