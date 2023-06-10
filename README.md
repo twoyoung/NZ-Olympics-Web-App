@@ -49,17 +49,24 @@ COMP636 Web App
   | @app.route("/admin/listevents") | listevents() | eventlist.html | `eventlist` | - |
  
   - **add new event_stages**
+  
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/addstages") | addstages() | addstages.html | `eventid` | - |
   | @app.route("/admin/stage/add", methods = ['POST']) | stageadd() | addstages.html | `stageid`, `stagename`, `eventid`, `location`, `stagedate`, `qualifying`, `pointstoqualify` | - |
   | @app.route("/admin/liststages") | liststages() | stagelist.html | `stagelist` | - |
   - **add scores and position**
-  @app.route("/admin/addscores")
-  @app.route("/admin/score/add", methods = ['POST'])
-  @app.route("/admin/listscores")
+  
+  | route | function | template | data passed | explanation |
+  | --- | --- | --- | --- | --- |
+  | @app.route("/admin/addscores") | addscores() | addscores.html | `stageid`, `memberid` | - |
+  | @app.route("/admin/score/add", methods = ['POST']) | scoreadd() | addscores.html | - |
+  | @app.route("/admin/listscores") | listscores() | listscores.html | `scorelist` | - |
   - **show the medal reports**
-  @app.route("/admin/showmedals")
+  
+  | route | function | template | data passed | explanation |
+  | --- | --- | --- | --- | --- |
+  | @app.route("/admin/showmedals") | showmedals() | showmedals.html | `num_medals`, `num_gold`, `num_silver`, `num_bronze`, `gold_members`, `silver_members`, `bronze_members` | - |
 
 
 ## Assumptions
