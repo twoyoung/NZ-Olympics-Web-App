@@ -44,7 +44,7 @@ COMP636 Web App
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/admin/addevents") | addevents() | addevents.html | teamid | - |
+  | @app.route("/admin/addevents") | addevents() | addevents.html | `teamid` | - |
   | @app.route("/admin/event/add", methods = ['POST']) | eventadd() | addevents.html | `eventid`, `eventname`, `sport`, `teamid` | - |
   | @app.route("/admin/listevents") | listevents() | eventlist.html | `eventlist` | - |
  
