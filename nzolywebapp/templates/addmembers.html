@@ -3,10 +3,10 @@
 {% block content %}
 <h2>Add a member</h2>
 <form action="/admin/members/add" method = "POST">
-        <label for="TeamName">Team Name:</label>
-        <select id="teamname" name="teamname">
-            {% for entry in teamname %}
-                <option value="{{entry[0]}}">{{entry[0]}}</option>
+        <label for="TeamName">Team Name(TeamID):</label>
+        <select id="team" name="team">
+            {% for entry in team %}
+                <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
             {% endfor %}
         </select>
         <p>* If the member's team is not in the selection list, please add a new team first.</p>

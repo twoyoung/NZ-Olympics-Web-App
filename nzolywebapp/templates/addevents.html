@@ -8,7 +8,7 @@
         <input type="text" name="eventname" />
         <label for="Sport">Sport:</label>
         <input type="text" name="sport" />
-        <label for="TeamName">Team Name:</label>
+        <label for="TeamName">Team Name(TeamID):</label>
         <select id="team" name="team">
             {% for entry in team %}
                 <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
