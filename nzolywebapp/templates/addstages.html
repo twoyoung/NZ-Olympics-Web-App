@@ -4,14 +4,14 @@
 <h2>Add a new event stage:</h2>
 <form action="/admin/stage/add" method = "POST">
     <legend>Add New Event Stage:</legend>
-        <label for="StageName">Stage Name:</label>
-        <input type="text" name="stagename" />
         <label for="Event">Event Name (Event ID):</label>
         <select id="event" name="event">
-            {% for entry in event %}
-                <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
-            {% endfor %}
+        {% for entry in event %}
+            <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
+        {% endfor %}
         </select>
+        <label for="StageName">Stage Name:</label>
+        <input type="text" name="stagename" />
         <label for="Location">Location:</label>
         <input type="text" name="location" />
         <label for="StageDate">Stage Date:</label>
