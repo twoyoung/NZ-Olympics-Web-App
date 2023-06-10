@@ -3,20 +3,18 @@
 {% block content %}
 <form action="/admin/score/add" method = "POST">
     <legend>Add Score and Position:</legend>
-        <label for="ResultID">Result ID:</label>
-        <input type="text" name="resultid" />
-        <label for="StageID">Stage ID:</label>
-        <select id="stageid" name="stageid">
-            {% if stageid %}
-                {% for entry in stageid %}
-                    <option value="{{entry[0]}}">{{entry[0]}}</option>
+        <label for="StageName">Stage Name (Stage ID):</label>
+        <select id="stage" name="stage">
+            {% if stage %}
+                {% for entry in stage %}
+                    <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
                 {% endfor %}
             {% endif %}
         </select>
-        <label for="MemberID">Member ID:</label>
-        <select id="memberid" name="memberid">
-            {% for entry in memberid %}
-                <option value="{{entry[0]}}">{{entry[0]}}</option>
+        <label for="Member">Member Name (Member ID):</label>
+        <select id="member" name="member">
+            {% for entry in member %}
+                <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
             {% endfor %}
         </select>
         <label for="PointsScored">Points Scored:</label>
