@@ -154,21 +154,18 @@ def membersadd():
 @app.route("/admin/members/edit/<memberid>")
 def editmember(memberid):
     connection = getCursor()
+    sql = "SELECT * FROM teams;"
+    connection.execute(sql)
+    team = connection.fetchall()
     sql = "SELECT * FROM members WHERE MemberID = %s;"
     parameters = (memberid,)
     connection.execute(sql, parameters)
     membertoedit = connection.fetchone()
-    sql = "SELECT TeamName FROM teams;"
-    connection.execute(sql)
-    teamname = connection.fetchall()
-    return render_template("editmember.html", membertoedit=membertoedit, teamname = teamname)
+    return render_template("editmember.html", membertoedit=membertoedit, team = team)
 
 @app.route("/admin/updatemembers", methods=["POST"])
 def updatemember():
-    connection = getCursor()
-    teamname = request.form.get('teamname')
-    connection.execute("SELECT TeamID FROM teams WHERE TeamName = %s", (teamname,))
-    teamid = connection.fetchone()
+    teamid = request.form.get('team')
     memberid = int(request.form.get('memberid'))
     firstname = request.form.get('firstname')
     lastname = request.form.get('lastname')

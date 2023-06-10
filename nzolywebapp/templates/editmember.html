@@ -4,10 +4,10 @@
 <form action="/admin/updatemembers" method = "POST">
         <label for="MemberID">Member ID (read only):</label>
         <input type="text" name="memberid" value="{{membertoedit[0]}}" readonly />
-        <label for="TeamName">Team Name:</label>
-        <select id="teamname" name="teamname">
-            {% for entry in teamname %}
-                <option value="{{membertoedit[1]}}">{{entry[0]}}</option>
+        <label for="TeamName">Team Name (Team ID):</label>
+        <select id="team" name="team">
+            {% for entry in team %}
+                <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
             {% endfor %}
         </select>
         <label for="FirstName">First Name:</label>
