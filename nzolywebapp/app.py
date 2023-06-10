@@ -133,21 +133,23 @@ def search():
 @app.route("/admin/addmembers")
 def addmembers():
     connection = getCursor()
-    sql = """SELECT TeamID FROM teams;"""
+    sql = """SELECT TeamName FROM teams;"""
     connection.execute(sql)
-    teamID = connection.fetchall()
-    return render_template("addmembers.html", teamid = teamID)
+    teamname = connection.fetchall()
+    return render_template("addmembers.html", teamname = teamname)
 
 @app.route("/admin/members/add", methods=["POST"])
 def membersadd():
-    teamid = request.form.get('teamid')
+    connection = getCursor()
+    teamname = request.form.get('teamname')
+    connection.execute("SELECT TeamID FROM teams WHERE TeamName = %s", (teamname,))
+    teamid = connection.fetchone()
     firstname = request.form.get('firstname')
     lastname = request.form.get('lastname')
     city = request.form.get('city')
     birthdate = request.form.get('birthdate')
     sql = "INSERT INTO members (TeamID, FirstName, LastName, City, Birthdate) VALUES (%s, %s, %s, %s, %s);"
-    parameters = (teamid, firstname, lastname, city, birthdate)
-    connection = getCursor()
+    parameters = (teamid[0], firstname, lastname, city, birthdate)
     connection.execute(sql, parameters)
     return redirect("/admin/listmembers")
 
