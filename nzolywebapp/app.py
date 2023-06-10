@@ -99,8 +99,12 @@ def liststages():
     stageList = connection.fetchall()
     return render_template("stagelist.html", stagelist = stageList)
 
-@app.route("/admin/results", methods = ['get'])
+@app.route("/admin/search")
 def search():
+    return render_template("search.html")
+
+@app.route("/admin/results", methods = ['get'])
+def results():
     name=request.args.get('searchinfo')
     str = name.split()
     memberResults = list()
@@ -121,6 +125,7 @@ def search():
         eventResults.extend(connection.fetchall())
         eventResults = list(set(eventResults))
     return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
+
         
         
 @app.route("/admin/addmembers")
