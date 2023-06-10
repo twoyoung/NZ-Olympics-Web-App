@@ -1,20 +1,20 @@
 {% extends "admin.html" %}
 
 {% block content %}
+<h2>Add a new event</h2>
 <form action="/admin/event/add" method = "POST">
     <legend> Add New Events: </legend>
-        <label for="EventID">Event ID:</label>
-        <input type="text" name="eventid" />
         <label for="EventName">Event Name:</label>
         <input type="text" name="eventname" />
         <label for="Sport">Sport:</label>
         <input type="text" name="sport" />
         <label for="TeamID">Team ID:</label>
-        <select id="teamid" name="teamid">
-            {% for entry in teamid %}
+        <select id="teamname" name="teamname">
+            {% for entry in teamname %}
                 <option value="{{entry[0]}}">{{entry[0]}}</option>
             {% endfor %}
         </select>
+        <p>* If the team is not in the selection list, please add a new team first.</p>
         <button type="submit">Add</button>
         
 </form>

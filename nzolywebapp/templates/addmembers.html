@@ -2,7 +2,6 @@
 
 {% block content %}
 <h2>Add a member</h2>
-<p>* If the member's team is not in the list, please add a new team first.</p>
 <form action="/admin/members/add" method = "POST">
         <label for="TeamID">Team ID:</label>
         <select id="teamname" name="teamname">
@@ -10,6 +9,7 @@
                 <option value="{{entry[0]}}">{{entry[0]}}</option>
             {% endfor %}
         </select>
+        <p>* If the member's team is not in the selection list, please add a new team first.</p>
         <label for="FirstName">First Name:</label>
         <input type="text" name="firstname" />
         <label for="LastName">Last Name:</label>

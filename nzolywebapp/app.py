@@ -184,20 +184,21 @@ def updatemember():
 @app.route("/admin/addevents")
 def addevents():
     connection = getCursor()
-    sql = """SELECT TeamID FROM teams;"""
+    sql = """SELECT TeamName FROM teams;"""
     connection.execute(sql)
-    teamID = connection.fetchall()
-    return render_template("addevents.html", teamid=teamID)
+    teamname = connection.fetchall()
+    return render_template("addevents.html", teamname=teamname)
 
 @app.route("/admin/event/add", methods = ['POST'])
 def eventadd():
-    eventid = request.form.get('eventid')
+    connection = getCursor()
+    teamname = request.form.get('teamname')
+    connection.execute("SELECT TeamID FROM teams WHERE TeamName = %s", (teamname,))
+    teamid = connection.fetchone()
     eventname = request.form.get('eventname')
     sport = request.form.get('sport')
-    teamid = request.form.get('teamid')
-    sql = "INSERT INTO events VALUES (%s, %s, %s, %s);"
-    parameters = (eventid, eventname, sport, teamid)
-    connection = getCursor()
+    sql = "INSERT INTO events VALUES (%s, %s, %s);"
+    parameters = (eventname, sport, teamid[0])
     connection.execute(sql, parameters)
     return redirect("/admin/listevents")
 
