@@ -245,9 +245,16 @@ def scoreadd():
     position = request.form.get('position')
     if position == "" or position == "0":
         position = None
-    sql = "INSERT INTO event_stage_results (StageID, MemberID, PointsScored, Position) VALUES (%s, %s, %s, %s);"
-    parameters = (stageid, memberid, pointsscored, position)
+    sql = "SELECT StageName FROM event_stage WHERE event_stage.StageID = %s"
     connection = getCursor()
+    connection.execute(sql, (stageid,))
+    stagename = connection.fetchone()[0]
+    if (stagename.lower() == "final" and position == None) or (stagename.lower() != "final" and position != None):
+        return redirect("/admin/addscores")
+    else:
+        sql = "INSERT INTO event_stage_results (StageID, MemberID, PointsScored, Position) VALUES (%s, %s, %s, %s);"
+        parameters = (stageid, memberid, pointsscored, position)
+    
     connection.execute(sql, parameters)
     return redirect("/admin/listscores")
 
