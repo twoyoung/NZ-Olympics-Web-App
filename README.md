@@ -49,9 +49,11 @@ COMP636 Web App
   | @app.route("/admin/listevents") | listevents() | eventlist.html | `eventlist` | - |
  
   - **add new event_stages**
-  @app.route("/admin/addstages")
-  @app.route("/admin/stage/add", methods = ['POST'])
-  @app.route("/admin/liststages")
+  | route | function | template | data passed | explanation |
+  | --- | --- | --- | --- | --- |
+  | @app.route("/admin/addstages") | addstages() | addstages.html | `eventid` | - |
+  | @app.route("/admin/stage/add", methods = ['POST']) | stageadd() | addstages.html | `stageid`, `stagename`, `eventid`, `location`, `stagedate`, `qualifying`, `pointstoqualify` | - |
+  | @app.route("/admin/liststages") | liststages() | stagelist.html | `stagelist` | - |
   - **add scores and position**
   @app.route("/admin/addscores")
   @app.route("/admin/score/add", methods = ['POST'])
