@@ -35,8 +35,12 @@ COMP636 Web App
   | @app.route("/admin/members/add", methods=["POST"]) | membersadd() | addmembers.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | admembers.html pass the input data to membersadd(), membersadd() then insert the data into database |
   | @app.route("/admin/listmembers") | adminlistmembers() | adminmemberlist.html | `memberlist` | display the updated member list |
   - edit existing members
-  @app.route("/admin/members/edit/<memberid>")
-  @app.route("/admin/updatemembers", methods=["POST"])
+  
+  | route | function | template | data passed | explanation |
+  | --- | --- | --- | --- | --- |
+  | @app.route("/admin/members/edit/<memberid>") | editmember(memberid) | editmember.html | `membertoedit`, `teamid` | - |
+  | @app.route("/admin/updatemembers", methods=["POST"]) | updatemember() | editmember.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | - | 
+  | @app.route("/admin/listmembers") | adminlistmembers() | adminmemberlist.html | `memberlist` | display the updated member list |
   - add new events
   @app.route("/admin/addevents")
   @app.route("/admin/event/add", methods = ['POST'])
