@@ -60,7 +60,7 @@ COMP636 Web App
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/addscores") | addscores() | addscores.html | `stageid`, `memberid` | - |
-  | @app.route("/admin/score/add", methods = ['POST']) | scoreadd() | addscores.html | - |
+  | @app.route("/admin/score/add", methods = ['POST']) | scoreadd() | addscores.html | `resultid`, `stageid`, `memberid`, `pointsscored`, `position` | - |
   | @app.route("/admin/listscores") | listscores() | listscores.html | `scorelist` | - |
   - **show the medal reports**
   
