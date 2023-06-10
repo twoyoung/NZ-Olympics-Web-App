@@ -225,7 +225,7 @@ def stageadd():
         qualifying = 1
     pointstoqualify = request.form.get('pointstoqualify')
     sql = "INSERT INTO event_stage (StageName, EventID, Location, StageDate, Qualifying, PointsToQualify) VALUES (%s, %s, %s, %s, %s, %s);"
-    parameters = (stagename.capitalize(), eventid, location, stagedate, qualifying, pointstoqualify)
+    parameters = (stagename.lower().capitalize(), eventid, location, stagedate, qualifying, pointstoqualify)
     connection.execute(sql, parameters)
     return redirect("/admin/liststages")
 
