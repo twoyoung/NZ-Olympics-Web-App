@@ -99,21 +99,6 @@ def liststages():
     stageList = connection.fetchall()
     return render_template("stagelist.html", stagelist = stageList)
 
-@app.route("/admin/listscores")
-def listscores():
-    connection = getCursor()
-    sql = '''SELECT ResultID, EventName, StageName, event_stage_results.StageID, FirstName, LastName, event_stage_results.MemberID, PointsScored, Position
-            FROM event_stage_results
-            LEFT JOIN event_stage
-            ON event_stage.StageID = event_stage_results.StageID
-            LEFT JOIN events
-            ON events.EventID = event_stage.EventID
-            LEFT JOIN members
-            ON members.MemberID = event_stage_results.MemberID;'''
-    connection.execute(sql)
-    scorelist = connection.fetchall()
-    return render_template("listscores.html", scorelist = scorelist)
-
 @app.route("/admin/results")
 def search():
     name=request.args.get('searchinfo')
@@ -258,11 +243,28 @@ def scoreadd():
     memberid = request.form.get('member')
     pointsscored = request.form.get('pointsscored')
     position = request.form.get('position')
+    if position == 0:
+        position = None
     sql = "INSERT INTO event_stage_results (StageID, MemberID, PointsScored, Position) VALUES (%s, %s, %s, %s);"
     parameters = (stageid, memberid, pointsscored, position)
     connection = getCursor()
     connection.execute(sql, parameters)
     return redirect("/admin/listscores")
+
+@app.route("/admin/listscores")
+def listscores():
+    connection = getCursor()
+    sql = '''SELECT ResultID, EventName, StageName, event_stage_results.StageID, FirstName, LastName, event_stage_results.MemberID, PointsScored, Position
+            FROM event_stage_results
+            LEFT JOIN event_stage
+            ON event_stage.StageID = event_stage_results.StageID
+            LEFT JOIN events
+            ON events.EventID = event_stage.EventID
+            LEFT JOIN members
+            ON members.MemberID = event_stage_results.MemberID;'''
+    connection.execute(sql)
+    scorelist = connection.fetchall()
+    return render_template("listscores.html", scorelist = scorelist)
 
 @app.route("/admin/showmedals")
 def showmedals():
