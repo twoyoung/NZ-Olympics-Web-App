@@ -227,7 +227,7 @@ def stageadd():
         qualifying = 0 
     else:
         qualifying = 1
-    pointstoqualify = int(request.form.get('pointstoquality'))
+    pointstoqualify = float(request.form.get('pointstoquality'))
     sql = "INSERT INTO event_stage (StageName, EventID, Location, StageDate, Qualifying, PointsToQualify) VALUES (%s, %s, %s, %s, %s, %s);"
     parameters = (stagename.capitalize(), eventid, location, stagedate, qualifying, pointstoqualify)
     connection.execute(sql, parameters)
