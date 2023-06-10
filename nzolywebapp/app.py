@@ -47,7 +47,7 @@ def listevents():
 @app.route("/listmembers/<name>")
 def athleteinterface(name):
     connection = getCursor()
-    upcomingEvents = """SELECT EventName, StageDate, StageName, Location 
+    sql = """SELECT EventName, StageDate, StageName, Location 
                         FROM events 
                         LEFT JOIN event_stage
                         ON events.EventID = event_stage.EventID
@@ -56,7 +56,10 @@ def athleteinterface(name):
                         LEFT JOIN members
                         ON teams.TeamID = members.TeamID
                         WHERE (StageID IS NULL OR StageID NOT IN (SELECT event_stage_results.StageID FROM event_stage_results)) AND members.FirstName = %s"""
-    previousResults = """SELECT EventName, StageDate, StageName, Qualifying, PointsScored, PointsToQualify, Position
+    parameters = (name,)
+    connection.execute(sql, parameters)
+    upcomingevents = connection.fetchall()
+    sql = """SELECT EventName, StageDate, StageName, Qualifying, PointsScored, PointsToQualify, Position
                         FROM event_stage_results
                         LEFT JOIN members
                         ON members.MemberID = event_stage_results.MemberID
@@ -66,12 +69,9 @@ def athleteinterface(name):
                         ON events.EventID = event_stage.EventID
                         Where FirstName = %s
                         ORDER BY EventName, StageDate;"""
-    parameters = (name,)
-    connection.execute(previousResults, parameters)
-    athleteInfo = connection.fetchall()
-    connection.execute(upcomingEvents, parameters)
-    eventInfo = connection.fetchall()
-    return render_template("athleteinterface.html", name = name, athleteinfo = athleteInfo, eventinfo = eventInfo)
+    connection.execute(sql, parameters)
+    previousresult = connection.fetchall()
+    return render_template("athleteinterface.html", name = name, upcomingevents = upcomingevents, previousresult = previousresult)
 
 @app.route("/admin")
 def admin():
