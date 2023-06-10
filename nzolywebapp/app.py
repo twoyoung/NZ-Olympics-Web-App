@@ -95,7 +95,7 @@ def adminlistevents():
 @app.route("/admin/liststages")
 def liststages():
     connection = getCursor()
-    connection.execute("SELECT * FROM event_stage;")
+    connection.execute("SELECT event_stage.EventID, EventName, StageID, StageName, Location, StageDate, Qualifying, PointsToQualify FROM event_stage LEFT JOIN events ON event_stage.EventID = events.EventID;")
     stageList = connection.fetchall()
     return render_template("stagelist.html", stagelist = stageList)
 
@@ -254,9 +254,8 @@ def scoreadd():
     else:
         sql = "INSERT INTO event_stage_results (StageID, MemberID, PointsScored, Position) VALUES (%s, %s, %s, %s);"
         parameters = (stageid, memberid, pointsscored, position)
-    
-    connection.execute(sql, parameters)
-    return redirect("/admin/listscores")
+        connection.execute(sql, parameters)
+        return redirect("/admin/listscores")
 
 @app.route("/admin/listscores")
 def listscores():
