@@ -170,7 +170,7 @@ def updatemember():
     connection = getCursor()
     teamname = request.form.get('teamname')
     connection.execute("SELECT TeamID FROM teams WHERE TeamName = %s", (teamname,))
-    teamid = connection.fetchone()[0]
+    teamid = connection.fetchone()
     memberid = request.form.get('memberid')
     firstname = request.form.get('firstname')
     lastname = request.form.get('lastname')
@@ -179,7 +179,7 @@ def updatemember():
     sql = '''UPDATE members 
             SET TeamID = %s, FirstName = %s, LastName = %s, City = %s, Birthdate= %s
             WHERE MemberID = %s;'''
-    parameters = (teamid, firstname, lastname, city, birthdate, memberid)
+    parameters = (teamid[0], firstname, lastname, city, birthdate, memberid)
     connection = getCursor()
     connection.execute(sql, parameters)
     return redirect("/admin/listmembers")
