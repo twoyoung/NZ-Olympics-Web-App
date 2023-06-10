@@ -56,7 +56,7 @@ def athleteinterface(name):
                         LEFT JOIN members
                         ON teams.TeamID = members.TeamID
                         WHERE (StageID IS NULL OR StageID NOT IN (SELECT event_stage_results.StageID FROM event_stage_results)) AND members.FirstName = %s"""
-    previousResults = """SELECT EventName, StageDate, StageName, Location, PointsScored
+    previousResults = """SELECT EventName, StageDate, StageName, Qualifying, PointsScored, PointsToQualify, Position
                         FROM event_stage_results
                         LEFT JOIN members
                         ON members.MemberID = event_stage_results.MemberID
@@ -64,7 +64,8 @@ def athleteinterface(name):
                         ON event_stage.StageID = event_stage_results.StageID
                         LEFT JOIN events
                         ON events.EventID = event_stage.EventID
-                        Where FirstName = %s"""
+                        Where FirstName = %s
+                        ORDER BY EventName, StageDate;"""
     parameters = (name,)
     connection.execute(previousResults, parameters)
     athleteInfo = connection.fetchall()
