@@ -6,7 +6,7 @@
 <h3>Gold medals: {{ num_gold[0][0] }}</h3>
 
 <table class="table">
-    <tr><th>First Name</th><th>Last Name</th><th>Team ID</th></tr>
+    <tr><th>Member ID</th><th>First Name</th><th>Last Name</th><th>Team Name</th><th>Team ID</th></tr>
     {% for member in gold_members %}
         <tr>
             {% for entry in member %}
@@ -19,7 +19,7 @@
 <h3>Silver medals: {{ num_silver[0][0] }}</h3>
 
 <table class="table">
-    <tr><th>First Name</th><th>Last Name</th><th>Team ID</th></tr>
+    <tr><th>Member ID</th><th>First Name</th><th>Last Name</th><th>Team Name</th><th>Team ID</th></tr>
     {% for member in silver_members %}
         <tr>
             {% for entry in member %}
@@ -32,7 +32,7 @@
 <h3>Bronze medals: {{ num_bronze[0][0] }}</h3>
 
 <table class="table">
-    <tr><th>First Name</th><th>Last Name</th><th>Team ID</th></tr>
+    <tr><th>Member ID</th><th>First Name</th><th>Last Name</th><th>Team Name</th><th>Team ID</th></tr>
     {% for member in bronze_members %}
         <tr>
             {% for entry in member %}

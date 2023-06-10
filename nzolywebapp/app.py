@@ -283,26 +283,32 @@ def showmedals():
     num_silver = connection.fetchall()
     connection.execute("SELECT COUNT(Position) FROM event_stage_results WHERE Position=3")
     num_bronze = connection.fetchall()
-    sql = '''SELECT FirstName, LastName, TeamID
+    sql = '''SELECT members.MemberID, FirstName, LastName, TeamName, members.TeamID
             FROM event_stage_results
-            JOIN members
+            LEFT JOIN members
             ON members.MemberID = event_stage_results.MemberID
+            LEFT JOIN teams
+            ON teams.TeamID = members.TeamID
             WHERE Position=1
             ORDER BY TeamID, LastName, Firstname'''
     connection.execute(sql)
     gold_members = connection.fetchall()
-    sql = '''SELECT FirstName, LastName, TeamID
+    sql = '''SELECT members.MemberID, FirstName, LastName, TeamName, members.TeamID
             FROM event_stage_results
-            JOIN members
+            LEFT JOIN members
             ON members.MemberID = event_stage_results.MemberID
+            LEFT JOIN teams
+            ON teams.TeamID = members.TeamID
             WHERE Position=2
             ORDER BY TeamID, LastName, Firstname'''
     connection.execute(sql)
     silver_members = connection.fetchall()
-    sql = '''SELECT FirstName, LastName, TeamID
+    sql = '''SELECT members.MemberID, FirstName, LastName, TeamName, members.TeamID
             FROM event_stage_results
-            JOIN members
+            LEFT JOIN members
             ON members.MemberID = event_stage_results.MemberID
+            LEFT JOIN teams
+            ON teams.TeamID = members.TeamID
             WHERE Position=3
             ORDER BY TeamID, LastName, Firstname'''
     connection.execute(sql)
