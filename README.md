@@ -32,20 +32,20 @@ COMP636 Web App
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/addmembers") | addmembers() | addmembers.html | `teamid` | addmembers() pass the available team id in database (`teamid`) to addmembers.html to display the form with limited team id choice for users to input the data | 
-  | @app.route("/admin/members/add", methods=["POST"]) | membersadd() | addmembers.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | admembers.html pass the input data to membersadd(), membersadd() then insert the data into database |
+  | @app.route("/admin/members/add") | membersadd() | addmembers.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | admembers.html pass the input data to membersadd(), membersadd() then insert the data into database |
   | @app.route("/admin/listmembers") | adminlistmembers() | adminmemberlist.html | `memberlist` | display the most recently updated member list |
   - **edit existing members**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/members/edit/<memberid>") | editmember(memberid) | editmember.html | `membertoedit`, `teamid` |   adminmemberlist.html or results.html pass the `memberid` to editmember(memberid) to locate the member to edit; editmember(memberid) finds the member data with the same member id from database and the available team id list and pass them to editmember.html which could display the form with the member information for user to edit|
-  | @app.route("/admin/updatemembers", methods=["POST"]) | updatemember() | editmember.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | editmember.html pass the edited data to updatemember() which update the database | 
+  | @app.route("/admin/updatemembers") | updatemember() | editmember.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | editmember.html pass the edited data to updatemember() which update the database | 
   - **add new events**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/addevents") | addevents() | addevents.html | `teamid` | - |
-  | @app.route("/admin/event/add", methods = ['POST']) | eventadd() | addevents.html | `eventid`, `eventname`, `sport`, `teamid` | - |
+  | @app.route("/admin/event/add") | eventadd() | addevents.html | `eventid`, `eventname`, `sport`, `teamid` | - |
   | @app.route("/admin/listevents") | listevents() | eventlist.html | `eventlist` | - |
  
   - **add new event_stages**
@@ -53,14 +53,14 @@ COMP636 Web App
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/addstages") | addstages() | addstages.html | `eventid` | - |
-  | @app.route("/admin/stage/add", methods = ['POST']) | stageadd() | addstages.html | `stageid`, `stagename`, `eventid`, `location`, `stagedate`, `qualifying`, `pointstoqualify` | - |
+  | @app.route("/admin/stage/add") | stageadd() | addstages.html | `stageid`, `stagename`, `eventid`, `location`, `stagedate`, `qualifying`, `pointstoqualify` | - |
   | @app.route("/admin/liststages") | liststages() | stagelist.html | `stagelist` | - |
   - **add scores and position**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/addscores") | addscores() | addscores.html | `stageid`, `memberid` | - |
-  | @app.route("/admin/score/add", methods = ['POST']) | scoreadd() | addscores.html | `resultid`, `stageid`, `memberid`, `pointsscored`, `position` | - |
+  | @app.route("/admin/score/add") | scoreadd() | addscores.html | `resultid`, `stageid`, `memberid`, `pointsscored`, `position` | - |
   | @app.route("/admin/listscores") | listscores() | listscores.html | `scorelist` | - |
   - **show the medal reports**
   
