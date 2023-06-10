@@ -197,7 +197,7 @@ def eventadd():
     teamid = connection.fetchone()
     eventname = request.form.get('eventname')
     sport = request.form.get('sport')
-    sql = "INSERT INTO events VALUES (%s, %s, %s);"
+    sql = "INSERT INTO events (EventName, Sport, NZTeam) VALUES (%s, %s, %s);"
     parameters = (eventname, sport, teamid[0])
     connection.execute(sql, parameters)
     return redirect("/admin/listevents")
