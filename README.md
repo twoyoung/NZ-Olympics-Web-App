@@ -3,7 +3,7 @@ COMP636 Web App
 
 ## Outline of the structure of the Web App
 
-- the default / interface
+- **the default / interface**
   - the base page
   
   | route | function | template | data passed | explanation |
@@ -16,7 +16,7 @@ COMP636 Web App
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/listmembers/<name>") | athleteinterface(name) | athleteinterface.html | `name`, `athleteinfo`, `eventinfo` | - | 
-- the admin interface
+- **the admin interface**
   - the admin base page
   
   | route | function | template | data passed | explanation |
