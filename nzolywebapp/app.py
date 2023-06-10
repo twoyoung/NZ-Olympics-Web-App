@@ -204,21 +204,18 @@ def eventadd():
 @app.route("/admin/addstages")
 def addstages():
     connection = getCursor()
-    sql = """SELECT DISTINCT EventName
+    sql = """SELECT *
             FROM events
             LEFT JOIN event_stage
             ON event_stage.EventID = events.EventID
             WHERE events.EventID NOT IN (SELECT EventID FROM event_stage WHERE event_stage.Qualifying = 0);"""
     connection.execute(sql)
-    eventname = connection.fetchall()
-    return render_template("addstages.html", eventname=eventname)
+    event = connection.fetchall()
+    return render_template("addstages.html", event=event)
 
 @app.route("/admin/stage/add", methods = ['POST'])
 def stageadd():
-    connection1 = getCursor()
-    eventname = request.form.get('eventname')
-    connection1.execute("SELECT EventID FROM events WHERE EventName = %s", (eventname,))
-    eventid = connection1.fetchone()
+    eventid = request.form.get('event')
     stagename = request.form.get('stagename').lower()
     location = request.form.get('location')
     stagedate = request.form.get('stagedate')
@@ -227,12 +224,10 @@ def stageadd():
     else:
         qualifying = 1
     pointstoqualify = request.form.get('pointstoquality')
-    if pointstoqualify is None:
-        pointsto
     sql = "INSERT INTO event_stage (StageName, EventID, Location, StageDate, Qualifying, PointsToQualify) VALUES (%s, %s, %s, %s, %s, %s);"
-    parameters = (stagename.capitalize(), eventid[0], location, stagedate, qualifying, pointstoqualify)
-    connection2 = getCursor()
-    connection2.execute(sql, parameters)
+    parameters = (stagename.capitalize(), eventid, location, stagedate, qualifying, pointstoqualify)
+    connection = getCursor()
+    connection.execute(sql, parameters)
     return redirect("/admin/liststages")
 
 

@@ -6,10 +6,10 @@
     <legend>Add New Event Stage:</legend>
         <label for="StageName">Stage Name:</label>
         <input type="text" name="stagename" />
-        <label for="EventName">Event Name:</label>
-        <select id="eventname" name="eventname">
-            {% for entry in eventname %}
-                <option value="{{entry[0]}}">{{entry[0]}}</option>
+        <label for="Event">Event Name (Event ID):</label>
+        <select id="event" name="event">
+            {% for entry in event %}
+                <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
             {% endfor %}
         </select>
         <label for="Location">Location:</label>
