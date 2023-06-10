@@ -10,6 +10,7 @@
         <nav>
             <h1>NZ Winter Olympics</h1>
             <ul>
+                <li><a href="{{ url_for('search') }}">Search Members and/or Events</a></li>
                 <li><a href="{{ url_for('adminlistevents') }}">List Events</a></li>
                 <li><a href="{{ url_for('adminlistmembers') }}">List Team Members</a></li>
                 <li><a href="{{ url_for('liststages') }}">List Event Stages</a></li>
@@ -21,11 +22,6 @@
                 <li><a href="{{ url_for('showmedals') }}">Show Medal Report</a></li>
             </ul>
         </nav>
-        <form action="/admin/results" method="get">
-            <label for="membersorevents">Search for members or/and events by name:</label>
-            <input type="text" name="searchinfo" placeholder="members or events" />
-            <button type="submit">Search</button>
-        </form>
           <section class="content">
             <header>
               {% block header %}{% endblock %}
