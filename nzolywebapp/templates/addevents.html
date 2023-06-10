@@ -11,7 +11,7 @@
         <label for="TeamName">Team Name:</label>
         <select id="team" name="team">
             {% for entry in team %}
-                <option value="{{entry[1]}}">{{entry[1]}}({{entry[0]}})</option>
+                <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
             {% endfor %}
         </select>
         <p>* If the team is not in the selection list, please add a new team first.</p>
