@@ -1,10 +1,8 @@
 {% extends "admin.html" %}
 
 {% block content %}
-
+<h2>Add a member</h2>
 <form action="/admin/members/add" method = "POST">
-        <label for="MemberID">Member ID:</label>
-        <input type="text" name="memberid" placeholder="0000" />
         <label for="TeamID">Team ID:</label>
         <select id="teamid" name="teamid">
             {% for entry in teamid %}

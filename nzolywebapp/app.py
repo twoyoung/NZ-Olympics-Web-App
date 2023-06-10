@@ -140,14 +140,13 @@ def addmembers():
 
 @app.route("/admin/members/add", methods=["POST"])
 def membersadd():
-    memberid = request.form.get('memberid')
     teamid = request.form.get('teamid')
     firstname = request.form.get('firstname')
     lastname = request.form.get('lastname')
     city = request.form.get('city')
     birthdate = request.form.get('birthdate')
-    sql = "INSERT INTO members VALUES (%s, %s, %s, %s, %s, %s);"
-    parameters = (memberid, teamid, firstname, lastname, city, birthdate)
+    sql = "INSERT INTO members (TeamID, FirstName, LastName, City, Birthdate) VALUES (%s, %s, %s, %s, %s);"
+    parameters = (teamid, firstname, lastname, city, birthdate)
     connection = getCursor()
     connection.execute(sql, parameters)
     return redirect("/admin/listmembers")
