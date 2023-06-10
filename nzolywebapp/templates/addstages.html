@@ -1,18 +1,20 @@
 {% extends "admin.html" %}
 
 {% block content %}
+<h2>Add a new event stage:</h2>
 <form action="/admin/stage/add" method = "POST">
     <legend>Add New Event Stage:</legend>
         <label for="StageID">Stage ID:</label>
         <input type="text" name="stageid" />
         <label for="StageName">Stage Name:</label>
         <input type="text" name="stagename" />
-        <label for="EventID">Event ID:</label>
-        <select id="eventid" name="eventid">
+        <label for="EventName">Event Name:</label>
+        <select id="eventname" name="eventname">
             {% for entry in eventid %}
                 <option value="{{entry[0]}}">{{entry[0]}}</option>
             {% endfor %}
         </select>
+        <p>* If event is not in the selection list, please add a new event first.</p>
         <label for="Location">Location:</label>
         <input type="text" name="location" />
         <label for="StageDate">Stage Date:</label>

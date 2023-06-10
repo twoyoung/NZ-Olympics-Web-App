@@ -205,23 +205,27 @@ def eventadd():
 @app.route("/admin/addstages")
 def addstages():
     connection = getCursor()
-    sql = """SELECT EventID FROM events;"""
+    sql = """SELECT EventName FROM events;"""
     connection.execute(sql)
-    eventID = connection.fetchall()
-    return render_template("addstages.html", eventid=eventID)
+    eventname = connection.fetchall()
+    return render_template("addstages.html", eventname=eventname)
 
 @app.route("/admin/stage/add", methods = ['POST'])
 def stageadd():
-    stageid = request.form.get('stageid')
+    connection = getCursor()
+    eventname = request.form.get('eventname')
+    connection.execute("SELECT EventID FROM events WHERE EventName = %s", (eventname,))
+    eventid = connection.fetchone()[0]
     stagename = request.form.get('stagename')
-    eventid = request.form.get('eventid')
     location = request.form.get('location')
     stagedate = request.form.get('stagedate')
-    qualifying = request.form.get('qualifying')
+    if stagename.lower() == 'final':
+        qualifying = 0 
+    else:
+        qualifying = 1
     pointstoqualify = request.form.get('pointstoqualify')
-    sql = "INSERT INTO event_stage VALUES (%s, %s, %s, %s, %s, %s, %s);"
-    parameters = (stageid, stagename, eventid, location, stagedate, qualifying, pointstoqualify)
-    connection = getCursor()
+    sql = "INSERT INTO event_stage (StageName, EventID, Location, StageDate, Qualifying, PointsToQualify) VALUES (%s, %s, %s, %s, %s, %s);"
+    parameters = (stagename, eventid, location, stagedate, qualifying, pointstoqualify)
     connection.execute(sql, parameters)
     return redirect("/admin/liststages")
 
