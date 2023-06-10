@@ -216,7 +216,7 @@ def addstages():
 
 @app.route("/admin/stage/add", methods = ['POST'])
 def stageadd():
-    connection = getCursor()
+    connection = getCursor(buffered=True)
     eventname = request.form.get('eventname')
     connection.execute("SELECT EventID FROM events WHERE EventName = %s", (eventname,))
     eventid = connection.fetchone()[0]
