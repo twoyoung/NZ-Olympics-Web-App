@@ -108,7 +108,7 @@ def listscores():
 
 @app.route("/admin/results")
 def search():
-    name=request.args['searchinfo']
+    name=request.args.get('searchinfo')
     str = name.split()
     memberResults = list()
     eventResults = list()
