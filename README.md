@@ -22,7 +22,6 @@ COMP636 Web App
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin") | admin() | admin.html | none | - |
-  | @app.route("/admin/listmembers") | adminlistmembers() | adminmemberlist.html | `memberlist` | display the most recently updated member list |
   - **search members or/and events using partial match**
   
   | route | function | template | data passed | explanation |
@@ -34,6 +33,7 @@ COMP636 Web App
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/addmembers") | addmembers() | addmembers.html | `teamid` | addmembers() pass the available team id in database (`teamid`) to addmembers.html to display the form with limited team id choice for users to input the data | 
   | @app.route("/admin/members/add", methods=["POST"]) | membersadd() | addmembers.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | admembers.html pass the input data to membersadd(), membersadd() then insert the data into database |
+  | @app.route("/admin/listmembers") | adminlistmembers() | adminmemberlist.html | `memberlist` | display the most recently updated member list |
   - **edit existing members**
   
   | route | function | template | data passed | explanation |
