@@ -187,21 +187,19 @@ def updatemember():
 @app.route("/admin/addevents")
 def addevents():
     connection = getCursor()
-    sql = """SELECT TeamName FROM teams;"""
+    sql = """SELECT * FROM teams;"""
     connection.execute(sql)
-    teamname = connection.fetchall()
-    return render_template("addevents.html", teamname=teamname)
+    team = connection.fetchall()
+    return render_template("addevents.html", team=team)
 
 @app.route("/admin/event/add", methods = ['POST'])
 def eventadd():
     connection = getCursor()
-    teamname = request.form.get('teamname')
-    connection.execute("SELECT TeamID FROM teams WHERE TeamName = %s", (teamname,))
-    teamid = connection.fetchone()
+    teamid = request.form.get('team')
     eventname = request.form.get('eventname')
     sport = request.form.get('sport')
     sql = "INSERT INTO events (EventName, Sport, NZTeam) VALUES (%s, %s, %s);"
-    parameters = (eventname, sport, teamid[0])
+    parameters = (eventname, sport, teamid)
     connection.execute(sql, parameters)
     return redirect("/admin/listevents")
 
@@ -231,6 +229,8 @@ def stageadd():
     else:
         qualifying = 1
     pointstoqualify = request.form.get('pointstoquality')
+    if pointstoqualify is None:
+        pointsto
     sql = "INSERT INTO event_stage (StageName, EventID, Location, StageDate, Qualifying, PointsToQualify) VALUES (%s, %s, %s, %s, %s, %s);"
     parameters = (stagename.capitalize(), eventid[0], location, stagedate, qualifying, pointstoqualify)
     connection2 = getCursor()

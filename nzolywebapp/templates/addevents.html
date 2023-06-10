@@ -9,9 +9,9 @@
         <label for="Sport">Sport:</label>
         <input type="text" name="sport" />
         <label for="TeamName">Team Name:</label>
-        <select id="teamname" name="teamname">
+        <select id="team" name="team">
             {% for entry in teamname %}
-                <option value="{{entry[0]}}">{{entry[0]}}</option>
+                <option value="{{entry[1]}}">{{entry[1]}}({{entry[0]}})</option>
             {% endfor %}
         </select>
         <p>* If the team is not in the selection list, please add a new team first.</p>
