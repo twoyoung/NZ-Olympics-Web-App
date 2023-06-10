@@ -204,7 +204,7 @@ def eventadd():
 @app.route("/admin/addstages")
 def addstages():
     connection = getCursor()
-    sql = """SELECT *
+    sql = """SELECT DISTINCT EventID, EventName
             FROM events
             LEFT JOIN event_stage
             ON event_stage.EventID = events.EventID
