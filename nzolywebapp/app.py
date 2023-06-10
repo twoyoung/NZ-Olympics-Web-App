@@ -171,7 +171,7 @@ def updatemember():
     teamname = request.form.get('teamname')
     connection.execute("SELECT TeamID FROM teams WHERE TeamName = %s", (teamname,))
     teamid = connection.fetchone()
-    memberid = request.form.get('memberid')
+    memberid = int(request.form.get('memberid'))
     firstname = request.form.get('firstname')
     lastname = request.form.get('lastname')
     city = request.form.get('city')
@@ -209,10 +209,10 @@ def eventadd():
 def addstages():
     connection = getCursor()
     sql = """SELECT DISTINCT EventName
-            FROM event_stage 
-            JOIN events
+            FROM events
+            LEFT JOIN event_stage
             ON event_stage.EventID = events.EventID
-            WHERE event_stage.EventID NOT IN (SELECT EventID FROM event_stage WHERE event_stage.Qualifying = 0);"""
+            WHERE events.EventID NOT IN (SELECT EventID FROM event_stage WHERE event_stage.Qualifying = 0);"""
     connection.execute(sql)
     eventname = connection.fetchall()
     return render_template("addstages.html", eventname=eventname)
