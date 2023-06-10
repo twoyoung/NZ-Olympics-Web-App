@@ -179,7 +179,7 @@ def updatemember():
     sql = '''UPDATE members 
             SET TeamID = %s, FirstName = %s, LastName = %s, City = %s, Birthdate= %s
             WHERE MemberID = %s;'''
-    parameters = (teamid[0], firstname, lastname, city, birthdate, memberid)
+    parameters = (teamid, firstname, lastname, city, birthdate, memberid)
     connection = getCursor()
     connection.execute(sql, parameters)
     return redirect("/admin/listmembers")
