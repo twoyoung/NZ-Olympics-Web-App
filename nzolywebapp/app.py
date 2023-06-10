@@ -244,13 +244,12 @@ def addscores():
 
 @app.route("/admin/score/add", methods = ['POST'])
 def scoreadd():
-    resultid = request.form.get('resultid')
-    stageid = request.form.get('stageid')
-    memberid = request.form.get('memberid')
+    stageid = request.form.get('stage')
+    memberid = request.form.get('member')
     pointsscored = request.form.get('pointsscored')
     position = request.form.get('position')
-    sql = "INSERT INTO event_stage_results VALUES (%s, %s, %s, %s, %s);"
-    parameters = (resultid, stageid, memberid, pointsscored, position)
+    sql = "INSERT INTO event_stage_results VALUES (%s, %s, %s, %s);"
+    parameters = (stageid, memberid, pointsscored, position)
     connection = getCursor()
     connection.execute(sql, parameters)
     return redirect("/admin/listscores")
