@@ -234,7 +234,9 @@ def stageadd():
 def addscores():
     connection = getCursor()
     sql = '''SELECT *
-            FROM event_stage 
+            FROM event_stage
+            LEFT JOIN events
+            ON event_stage.EventID = events.EventID 
             WHERE StageID NOT IN (SELECT event_stage_results.StageID FROM event_stage_results WHERE PointsScored IS NOT NULL);'''  
     connection.execute(sql)
     stage = connection.fetchall()
