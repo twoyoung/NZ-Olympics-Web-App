@@ -99,7 +99,7 @@ def liststages():
     stageList = connection.fetchall()
     return render_template("stagelist.html", stagelist = stageList)
 
-@app.route("/admin/results")
+@app.route("/admin/results", methods = ['get'])
 def search():
     name=request.args.get('searchinfo')
     str = name.split()
