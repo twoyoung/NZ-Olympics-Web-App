@@ -23,7 +23,9 @@ COMP636 Web App
   | --- | --- | --- | --- | --- |
   | @app.route("/admin") | admin() | admin.html | none | - |
   - search members or/and events using partial match
-  @app.route("/admin/results")
+  | route | function | template | data passed | explanation |
+  | --- | --- | --- | --- | --- |
+  | @app.route("/admin/results") | search()| results.html| `name`, `memberresults`, `eventresults` | - |
   - add new members
   @app.route("/admin/addmembers")
   @app.route("/admin/members/add", methods=["POST"])
