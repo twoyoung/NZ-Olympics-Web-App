@@ -88,7 +88,7 @@ def adminlistmembers():
 @app.route("/admin/listevents")
 def adminlistevents():
     connection = getCursor()
-    connection.execute("SELECT EventID, EventName, Sport, TeamName, NZTeam FROM events LEFT JOIN teams ON events.NZTeam = team.TeamID;")
+    connection.execute("SELECT EventID, EventName, Sport, TeamName, NZTeam FROM events LEFT JOIN teams ON events.NZTeam = teams.TeamID;")
     eventList = connection.fetchall()
     return render_template("admineventlist.html", eventlist = eventList)
 
