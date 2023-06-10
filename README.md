@@ -4,56 +4,56 @@ COMP636 Web App
 ## Outline of the structure of the Web App
 
 - **the default / interface**
-  - the base page
+  - **the base page**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/") | home() | base.html | none | - |
   | @app.route("/listmembers") | listmembers() | memberlist.html | `memberlist` | - |
   | @app.route("/listevents") | listevents() | eventlist.html | `eventlist` | - |
-  - the athlete interface
+  - **the athlete interface**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/listmembers/<name>") | athleteinterface(name) | athleteinterface.html | `name`, `athleteinfo`, `eventinfo` | - | 
 - **the admin interface**
-  - the admin base page
+  - ** the admin base page **
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin") | admin() | admin.html | none | - |
-  - search members or/and events using partial match
+  - ** search members or/and events using partial match **
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/results") | search()| results.html| `name`, `memberresults`, `eventresults` | - |
-  - add new members
+  - **add new members**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/addmembers") | addmembers() | addmembers.html | `teamid` | addmembers() pass the available team id in database (`teamid`) to addmembers.html to display the form with limited team id choice for users to input the data | 
   | @app.route("/admin/members/add", methods=["POST"]) | membersadd() | addmembers.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | admembers.html pass the input data to membersadd(), membersadd() then insert the data into database |
   | @app.route("/admin/listmembers") | adminlistmembers() | adminmemberlist.html | `memberlist` | display the updated member list |
-  - edit existing members
+  - **edit existing members**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | @app.route("/admin/members/edit/<memberid>") | editmember(memberid) | editmember.html | `membertoedit`, `teamid` | - |
   | @app.route("/admin/updatemembers", methods=["POST"]) | updatemember() | editmember.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | - | 
   | @app.route("/admin/listmembers") | adminlistmembers() | adminmemberlist.html | `memberlist` | display the updated member list |
-  - add new events
+  - **add new events**
   @app.route("/admin/addevents")
   @app.route("/admin/event/add", methods = ['POST'])
   @app.route("/admin/listevents")
-  - add new event_stages
+  - **add new event_stages**
   @app.route("/admin/addstages")
   @app.route("/admin/stage/add", methods = ['POST'])
   @app.route("/admin/liststages")
-  - add scores and position
+  - **add scores and position**
   @app.route("/admin/addscores")
   @app.route("/admin/score/add", methods = ['POST'])
   @app.route("/admin/listscores")
-  - show the medal reports
+  - **show the medal reports**
   @app.route("/admin/showmedals")
 
 
