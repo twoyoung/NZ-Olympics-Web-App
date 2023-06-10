@@ -10,7 +10,7 @@
         <input type="text" name="sport" />
         <label for="TeamName">Team Name:</label>
         <select id="team" name="team">
-            {% for entry in teamname %}
+            {% for entry in team %}
                 <option value="{{entry[1]}}">{{entry[1]}}({{entry[0]}})</option>
             {% endfor %}
         </select>
