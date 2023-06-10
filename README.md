@@ -38,8 +38,8 @@ COMP636 Web App
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/admin/members/edit/<memberid>") | editmember(memberid) | editmember.html | `membertoedit`, `teamid` | - |
-  | @app.route("/admin/updatemembers", methods=["POST"]) | updatemember() | editmember.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | - | 
+  | @app.route("/admin/members/edit/<memberid>") | editmember(memberid) | editmember.html | `membertoedit`, `teamid` |   adminmemberlist.html or results.html pass the `memberid` to editmember(memberid) to locate the member to edit; editmember(memberid) finds the member data with the same member id from database and the available team id list and pass them to editmember.html which could display the form with the member information for user to edit|
+  | @app.route("/admin/updatemembers", methods=["POST"]) | updatemember() | editmember.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | editmember.html pass the edited data to updatemember() which update the database | 
   | @app.route("/admin/listmembers") | adminlistmembers() | adminmemberlist.html | `memberlist` | display the updated member list |
   - **add new events**
   @app.route("/admin/addevents")
