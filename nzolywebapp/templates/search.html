@@ -3,9 +3,23 @@
 {% block header %}
 
 <h2>Search for members or/and events</h2>
+<h3>Search both in one click:</h3>
 <form action="/admin/results" method="get">
     <label for="membersorevents">Input the name of the member or/and event, seperate with blank:</label>
     <input type="text" name="searchinfo" />
+    <button type="submit">Search</button>
+</form>
+
+<h3>Search seperately:</h3>
+<form action="/admin/results" method="get">
+    <label for="member">Search member: input the name of the member:</label>
+    <input type="text" name="searchmember" />
+    <button type="submit">Search</button>
+</form>
+
+<form action="/admin/results" method="get">
+    <label for="event">Search event: input the name of the event:</label>
+    <input type="text" name="searchevent" />
     <button type="submit">Search</button>
 </form>
 

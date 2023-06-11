@@ -1,0 +1,23 @@
+{% extends "admin.html" %}
+
+{% block header %}
+<h2>{{ name }}</h2>
+{% endblock %}
+
+<h4>Search results in events:</h4>
+    {% if eventresults %}
+        <table class="table table-striped table-hover">
+            <tr><th>EventID</th><th>EventName</th><th>Sport</th><th>NZTeam</th></tr>
+            {% for event in eventresults %}
+            <tr>
+            {% for item in event %}
+                <td>{{item}}</td>
+            {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Couldn't find an event that contains '{{ name }}' in its name.</p>
+    {% endif %}
+
+{% endblock %}

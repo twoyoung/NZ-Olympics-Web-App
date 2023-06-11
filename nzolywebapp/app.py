@@ -107,25 +107,55 @@ def search():
 @app.route("/admin/results", methods = ['get'])
 def results():
     name=request.args.get('searchinfo')
-    str = name.split()
-    memberResults = list()
-    eventResults = list()
-    connection = getCursor()
-    for item in str:
-        sql1 = """SELECT * 
-                FROM members 
-                WHERE members.FirstName LIKE %s OR members.LastName LIKE %s;"""
-        parameters = (f"%{item}%")
-        connection.execute(sql1, (parameters, parameters))
-        memberResults.extend(connection.fetchall())
-        memberResults = list(set(memberResults))
-        sql2 = """SELECT *
-                FROM events
-                WHERE events.EventName LIKE %s;"""
-        connection.execute(sql2, (parameters,))
-        eventResults.extend(connection.fetchall())
-        eventResults = list(set(eventResults))
-    return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
+    member=request.args.get('searchmember')
+    event=request.args.get('searchevent')
+    if name:
+        str = name.split()
+        memberResults = list()
+        eventResults = list()
+        connection = getCursor()
+        for item in str:
+            sql1 = """SELECT * 
+                    FROM members 
+                    WHERE members.FirstName LIKE %s OR members.LastName LIKE %s;"""
+            parameters = (f"%{item}%")
+            connection.execute(sql1, (parameters, parameters))
+            memberResults.extend(connection.fetchall())
+            memberResults = list(set(memberResults))
+            sql2 = """SELECT *
+                    FROM events
+                    WHERE events.EventName LIKE %s;"""
+            connection.execute(sql2, (parameters,))
+            eventResults.extend(connection.fetchall())
+            eventResults = list(set(eventResults))
+            return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
+    elif member:
+        str = member.split()
+        memberResults = list()
+        connection = getCursor()
+        for item in str:
+            sql = """SELECT *
+                    FROM members
+                    WHERE members.FirstName LIKE %s OR members.LastName LIKE %s;"""
+            parameters = (f"%{item}%")
+            connection.execute(sql1, (parameters, parameters))
+            memberResults.extend(connection.fetchall())
+            memberResults = list(set(memberResults))
+            return render_template("memberresults.html", name = member, memberResults = memberResults)
+    elif event:
+        str = event.split()
+        eventResults = list()
+        connection = getCursor()
+        for item in str:
+            sql = """SELECT *
+                    FROM events
+                    WHERE events.EventName LIKE %s;"""
+            parameters = (f"%{item}%")
+            connection.execute(sql1, (parameters, ))
+            eventResults.extend(connection.fetchall())
+            eventResults = list(set(memberResults))
+            return render_template("eventresults.html", name = event, eventResults = eventResults)
+
 
         
         
