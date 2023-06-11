@@ -60,14 +60,14 @@ COMP636 Web App
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/admin/addscores") | addscores() | addscores.html | `stageid`, `memberid` | addscores() pass the existing stage id list (`stageid`) and member id list (`memberid`) to addscores.html to render the form for user to input the data |
-  | @app.route("/admin/score/add") | scoreadd() | addscores.html | `resultid`, `stageid`, `memberid`, `pointsscored`, `position` | addscores.html pass the user input data to scoreadd(), which then insert the data to database |
-  | @app.route("/admin/listscores") | listscores() | listscores.html | `scorelist` | listscores() pass the updated score list (`scorelist`) to listscores.html |
+  | **@app.route("/admin/addscores")** | <ins>addscores()</ins> | *addscores.html* | `stage`, `member` | <ins>addscores()</ins> pass `stage`<sub>(event_stage table in database)</sub> and `member` <sub>(members talbe in database)</sub> to *addscores.html* so that *addscores.html* could render the form with a selection of available stages and members for user to choose  |
+  | **@app.route("/admin/score/add")** | <ins>scoreadd()</ins> | *addscores.html* | `stageid`, `memberid`, `pointsscored`, `position` | *addscores.html* pass the user input data to <ins>scoreadd()</ins>, which then insert the data into database |
+  | **@app.route("/admin/listscores")** | <ins>listscores()</ins> | *listscores.html* | `scorelist` | <ins>listscores()</ins> get the updated data `scorelist` from database and pass it to *listscores.html* to render |
   - **show the medal reports**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/admin/showmedals") | showmedals() | showmedals.html | `num_medals`, `num_gold`, `num_silver`, `num_bronze`, `gold_members`, `silver_members`, `bronze_members` | showmedals() pass the data to showmedals.html to render |
+  | **@app.route("/admin/showmedals")** | <ins>showmedals()</ins> | *showmedals.html* | `num_medals`, `num_gold`, `num_silver`, `num_bronze`, `gold_members`, `silver_members`, `bronze_members` | <ins>showmedals()</ins> get the data from database and then pass them to *showmedals.html* to render |
 
 
 ## Assumptions
