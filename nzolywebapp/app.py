@@ -257,7 +257,7 @@ def scoreadd():
     connection.execute(sql, (stageid,))
     stagename = connection.fetchone()[0]
     if (stagename.lower() == "final" and position == None) or (stagename.lower() != "final" and position != None):
-        return redirect("/admin/addscores")
+        return render_template("addscores.html", stageid=stageid, memberid=memberid, pointsscored=pointsscored)
     else:
         sql = "INSERT INTO event_stage_results (StageID, MemberID, PointsScored, Position) VALUES (%s, %s, %s, %s);"
         parameters = (stageid, memberid, pointsscored, position)
