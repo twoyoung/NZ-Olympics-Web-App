@@ -1,7 +1,7 @@
 {% extends "admin.html" %}
 
 {% block content %}
-{% if error %}
+{% if error != 0 %}
     <form action="/admin/score/add" method = "POST">
         <legend>Add Score and Position:</legend>
             <label for="StageName">Event Name - Stage Name (Stage ID):</label>
