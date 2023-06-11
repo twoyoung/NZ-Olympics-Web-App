@@ -80,7 +80,7 @@ def admin():
 @app.route("/admin/listmembers")
 def adminlistmembers():
     connection = getCursor()
-    connection.execute("SELECT members.MemberID, teams.TeamName, members.FirstName, members.LastName, members.City, members.Birthdate FROM members JOIN teams on members.TeamID = teams.TeamID ORDER BY TeamID, LastName, FirstName;")
+    connection.execute("SELECT members.MemberID, teams.TeamName, members.FirstName, members.LastName, members.City, members.Birthdate FROM members JOIN teams on members.TeamID = teams.TeamID ORDER BY teams.TeamID, LastName, FirstName;")
     memberList = connection.fetchall()
     # print(memberList)
     return render_template("adminmemberlist.html", memberlist = memberList)
