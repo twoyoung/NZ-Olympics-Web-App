@@ -4,17 +4,29 @@
 <h2>Add a new event</h2>
 <form action="/admin/event/add" method = "POST">
     <legend> Add New Events: </legend>
-        <label for="EventName">Event Name:</label>
-        <input type="text" name="eventname" />
-        <label for="Sport">Sport:</label>
-        <input type="text" name="sport" />
-        <label for="TeamName">Team Name(TeamID):</label>
-        <select id="team" name="team">
+
+    <div class="input-group mb-3">
+        <label for="EventName" class="form-label">Event Name:</label>
+        <input type="text" class="form-control" placeholder="Event Name" aria-label="eventname" name="eventname" />
+    </div>
+
+    <div class="input-group mb-3">
+        <label for="Sport" class="form-label">Sport:</label>
+        <input type="text" name="sport" class="form-control" placeholder="Sports" />
+    </div>
+
+    <div class="mb-3">
+        <label for="TeamName" class="form-label">Team Name(TeamID):</label>
+        <select class="form-select" aria-label="Default select example" id="team" name="team">
             {% for entry in team %}
                 <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
             {% endfor %}
         </select>
-        <button type="submit">Add</button>
+    </div>
+
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Add</button>
+    </div>
         
 </form>
 
