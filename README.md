@@ -76,8 +76,8 @@ COMP636 Web App
 
 
 ## Assumptions
-- **Search Function in Admin Interface:** Instead of specifying member search and event search seperately as different search bars, I designed the search function in admin interface to be able to search from both members and events database at the same time in just one click. It accepts any length of strings, splits the input strings into seperate words by space, searches each words in both members and events database and then returns two results in one search. 
-- **Upcoming Events in Athlete Interface:** Due to the lack of linking information between each athlete/member and the event/stage that does not have a score (upcoming events/stages), I changed the output from the specified athlete's upcoming events/stages to the athlete's team's upcoming events/stages. So the specified athlete might attend 0, 1, or many of the events/stages listed.
-- **Admin Interface Base 
+- **Search Function in Admin Interface:** Here I designed 3 ways of searching: searching from both members and events database at the same time in just one click, searching just for members and searching just for events. It accepts any length of strings, splits the input strings into seperate words by space, searches each words in members and/or events database and then returns the results in the corresponding page.
+- **Upcoming Events in Athlete Interface:** Due to the lack of linking information between each athlete/member and the event/stage that does not have a score (upcoming events/stages), I changed the output from the specified athlete's upcoming events/stages to the athlete's team's upcoming events/stages. So the specified athlete could attend 0, 1, or many of the upcoming events/stages listed.
+- **Admin Interface Base:**
 
 ## Changes required if the Web App was to support multiple different Olympics
