@@ -6,28 +6,36 @@
 
 {% block content %}
 <h4>Search results in members:</h4>
-    <table class="table table-striped table-hover table-bordered">
-        <tr><th>Edit</th><th>MemberID</th><th>TeamID</th><th>FirstName</th><th>LastName</th><th>City</th><th>Birthdate</th></tr>
-        {% for member in memberresults %}
-            <tr>
-                <td><a href="/admin/members/edit/{{member[0]}}">Edit</a></td>
-                {% for item in member %}
-                    <td>{{item}}</td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
+    {% if memberresults %}
+        <table class="table table-striped table-hover table-bordered">
+            <tr><th>Edit</th><th>MemberID</th><th>TeamID</th><th>FirstName</th><th>LastName</th><th>City</th><th>Birthdate</th></tr>
+            {% for member in memberresults %}
+                <tr>
+                    <td><a href="/admin/members/edit/{{member[0]}}">Edit</a></td>
+                    {% for item in member %}
+                        <td>{{item}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Couldn't find a member that contains {{ name }} in its name.</p>
+    {% endif %}
 
 <h4>Search results in events:</h4>
-    <table class="table table-striped table-hover">
-        <tr><th>EventID</th><th>EventName</th><th>Sport</th><th>NZTeam</th></tr>
-        {% for event in eventresults %}
-        <tr>
-        {% for item in event %}
-            <td>{{item}}</td>
-        {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
+    {% if eventresults %}
+        <table class="table table-striped table-hover">
+            <tr><th>EventID</th><th>EventName</th><th>Sport</th><th>NZTeam</th></tr>
+            {% for event in eventresults %}
+            <tr>
+            {% for item in event %}
+                <td>{{item}}</td>
+            {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Couldn't find an event that contains {{ name }} in its name.</p>
+    {% endif %}
 {% endblock %}
 
