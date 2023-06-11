@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<h4>Upcoming Events & Stages</h4>
+<h4>Upcoming Events & Stages for {{ name }}'s Team</h4>
     <table class="table table-striped table-hover table-bordered">
         <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th></tr>
         {% for event in upcomingevents %}
@@ -17,7 +17,7 @@
         {% endfor %}
     </table>
 
-<h4>Previous Results</h4>
+<h4>{{ name }}'s Previous Results</h4>
     <table class="table table-striped table-hover table-bordered">
         <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th><th>Result</th></tr>
         {% for entry in previousresult %}
