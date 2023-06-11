@@ -128,7 +128,7 @@ def results():
             connection.execute(sql2, (parameters,))
             eventResults.extend(connection.fetchall())
             eventResults = list(set(eventResults))
-            return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
+        return render_template("results.html", name = name, memberresults = memberResults, eventresults = eventResults)
     elif member:
         str = member.split()
         memberResults = list()
@@ -141,7 +141,7 @@ def results():
             connection.execute(sql, (parameters, parameters))
             memberResults.extend(connection.fetchall())
             memberResults = list(set(memberResults))
-            return render_template("memberresults.html", str = str, name = member, memberresults = memberResults)
+        return render_template("memberresults.html", str = str, name = member, memberresults = memberResults)
     elif event:
         str = event.split()
         eventResults = list()
@@ -154,7 +154,7 @@ def results():
             connection.execute(sql, (parameters, ))
             eventResults.extend(connection.fetchall())
             eventResults = list(set(eventResults))
-            return render_template("eventresults.html", name = event, eventresults = eventResults)
+        return render_template("eventresults.html", name = event, eventresults = eventResults)
 
 
         
