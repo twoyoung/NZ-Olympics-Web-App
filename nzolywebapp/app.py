@@ -138,7 +138,7 @@ def results():
                     FROM members
                     WHERE members.FirstName LIKE %s OR members.LastName LIKE %s;"""
             parameters = (f"%{item}%")
-            connection.execute(sql1, (parameters, parameters))
+            connection.execute(sql, (parameters, parameters))
             memberResults.extend(connection.fetchall())
             memberResults = list(set(memberResults))
             return render_template("memberresults.html", name = member, memberResults = memberResults)
@@ -151,7 +151,7 @@ def results():
                     FROM events
                     WHERE events.EventName LIKE %s;"""
             parameters = (f"%{item}%")
-            connection.execute(sql1, (parameters, ))
+            connection.execute(sql, (parameters, ))
             eventResults.extend(connection.fetchall())
             eventResults = list(set(memberResults))
             return render_template("eventresults.html", name = event, eventResults = eventResults)
