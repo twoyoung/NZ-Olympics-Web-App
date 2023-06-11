@@ -8,7 +8,7 @@
     <tr><th>Edit</th></th><th>Member ID</th><th>Team Name</th><th>First Name</th><th>Last Name</th><th>City</th><th>Birthdate</th></tr>
     {% for entry in memberlist %}
         <tr>
-                <td><a href="/admin/members/edit/{{member[0]}}">Edit</a></td>
+                <td><a href="/admin/members/edit/{{entry[0]}}">Edit</a></td>
                 <td>{{entry[0]}}</td>
                 <td>{{entry[1]}}</td>
                 <td>{{entry[2]}}</td>
