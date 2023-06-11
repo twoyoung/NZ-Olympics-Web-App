@@ -68,6 +68,11 @@ COMP636 Web App
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | **@app.route("/admin/showmedals")** | <ins>showmedals()</ins> | *showmedals.html* | `num_medals`, `num_gold`, `num_silver`, `num_bronze`, `gold_members`, `silver_members`, `bronze_members` | <ins>showmedals()</ins> get the data from database and then pass them to *showmedals.html* to render |
+  <h3>show the team member reports</h3>
+  
+  | route | function | template | data passed | explanation |
+  | --- | --- | --- | --- | --- |
+  | **@app.route("/admin/showmembers")** | <ins>showmembers()</ins> | -- | -- | redirect to **@app.route("/admin/listmembers")** to render the member list |
 
 
 ## Assumptions
