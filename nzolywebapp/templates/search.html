@@ -1,10 +1,11 @@
 {% extends "admin.html" %}
 
+<!-- code in here to display a page with search bars-->
 {% block header %}
 
 <h4>Search for members or/and events in one click:</h4>
 <form action="/admin/results" method="get">
-    <label for="membersorevents">Input the name of the member or/and event:</label>
+    <label for="membersorevents">Input the name of members or/and events:</label>
     <input type="text" name="searchinfo" />
     <button type="submit">Search</button>
 </form>
