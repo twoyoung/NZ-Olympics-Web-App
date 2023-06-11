@@ -8,14 +8,14 @@ COMP636 Web App
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/") | home() | base.html | none | render the base page |
-  | @app.route("/listmembers") | listmembers() | memberlist.html | `memberlist` | listmembers() get the member information from database and pass the data `memberlist` to memberlist.html |
-  | @app.route("/listevents") | listevents() | eventlist.html | `eventlist` | listevents() get the event information from database and pass the data `eventlist` to eventlist.html |
+  | @app.route("/") | <ins>home()</ins> | *base.html* | - | render the base page |
+  | @app.route("/listmembers") | <ins>listmembers()</ins> | *memberlist.html* | `memberlist` | <ins>listmembers()</ins> pass `memberlist`<sub>(members table information in database)</sub> to *memberlist.html* |
+  | @app.route("/listevents") | <ins>listevents()</ins> | *eventlist.html* | `eventlist` | <ins>listevents()</ins> pass `eventlist`<sub>(events table information in database)</sub> to *eventlist.html* |
   - **the athlete interface**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/listmembers/<name>") | athleteinterface(name) | memberlist.html, athleteinterface.html | `name`, `athleteinfo`, `eventinfo` | memberlist.html pass the `name` to athleteinterface(), which use it to find the athletes previous results (`athleteinfo`) and upcoming events (`eventinfo`) and pass them to athleteinterface.html to render | 
+  | @app.route("/listmembers/< name>") | <ins>athleteinterface(name)</ins> | *memberlist.html, athleteinterface.html* | `name`, `upcomingevents`, `previousresult` | *memberlist.html* pass `name` to <ins>athleteinterface(name)</ins> to locate the athlete; <ins>athleteinterface(name)</ins> then get data `previousresult`<sub>(athletes previous results)</sub> and `upcomingevents`<sub>(upcoming events)</sub> from database and pass them to *athleteinterface.html* to render | 
 - **the admin interface**
   - **the admin base page**
   
