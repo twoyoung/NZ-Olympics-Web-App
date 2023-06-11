@@ -230,8 +230,8 @@ def stageadd():
     return redirect("/admin/liststages")
 
 
-@app.route("/admin/addscores/<error>")
-def addscores(error):
+@app.route("/admin/addscores")
+def addscores():
     connection = getCursor()
     sql = '''SELECT *
             FROM event_stage
@@ -242,7 +242,7 @@ def addscores(error):
     stage = connection.fetchall()
     connection.execute("SELECT * FROM members;")
     member = connection.fetchall()
-    return render_template("addscores.html", error = error, stage = stage, member=member)
+    return render_template("addscores.html", stage = stage, member=member)
 
 @app.route("/admin/score/add", methods = ['POST'])
 def scoreadd():
@@ -257,7 +257,7 @@ def scoreadd():
     connection.execute(sql, (stageid,))
     stagename = connection.fetchone()[0]
     if (stagename.lower() == "final" and position == None) or (stagename.lower() != "final" and position != None):
-        return redirect("/admin/addscores/<error>", error = 1)
+        return redirect("/admin/addscores")
     else:
         sql = "INSERT INTO event_stage_results (StageID, MemberID, PointsScored, Position) VALUES (%s, %s, %s, %s);"
         parameters = (stageid, memberid, pointsscored, position)
