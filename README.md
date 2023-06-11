@@ -33,7 +33,7 @@ COMP636 Web App
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | **@app.route("/admin/addmembers")** | <ins>addmembers()</ins> | *addmembers.html* | `team` | <ins>addmembers()</ins> pass `team`<sub>(teams table in database)</sub> to *addmembers.html* so that *addmembers.html* could render the form with a selection of available teams for user to choose | 
-  | **@app.route("/admin/members/add")** | <ins>membersadd()</ins> | *addmembers.html* | `teamid`, `firstname`, `lastname`, `city`, `birthdate` | *admembers.html* pass the input data to <ins>membersadd()</ins>; <ins>membersadd()</ins> then insert the data into database |
+  | **@app.route("/admin/members/add")** | <ins>membersadd()</ins> | *addmembers.html* | `teamid`, `firstname`, `lastname`, `city`, `birthdate` | *addmembers.html* pass the input data to <ins>membersadd()</ins>; <ins>membersadd()</ins> then insert the data into database |
   | **@app.route("/admin/listmembers")** | <ins>adminlistmembers()</ins> | *adminmemberlist.html* | `memberlist` | <ins>adminlistmembers()</ins> get the updated data `memberlist` from database and pass it to *adminmemberlist.html* to render |
   - **edit existing members**
   
@@ -45,17 +45,17 @@ COMP636 Web App
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/admin/addevents") | addevents() | addevents.html | `teamid` | addevents() pass the existing team id list (`teamid`) to adevents.html to render the form for user to input the data |
-  | @app.route("/admin/event/add") | eventadd() | addevents.html | `eventid`, `eventname`, `sport`, `teamid` | addevents.html pass the user input data to eventadd(), which then insert the data to database |
-  | @app.route("/admin/listevents") | listevents() | eventlist.html | `eventlist` | listevents() pass the updated event list(`eventlist`) to eventist.html |
+  | **@app.route("/admin/addevents")** | <ins>addevents()</ins> | *addevents.html* | `team` | <ins>addevents()</ins> pass `team`<sub>(teams table in database)</sub> to *addevents.html* so that *addevents.html* could render the form with a selection of available teams for user to choose |
+  | **@app.route("/admin/event/add")** | <ins>eventadd()</ins> | *addevents.html* | `eventname`, `sport`, `teamid` | *addevents.html* pass the input data to <ins>eventadd()</ins>; <ins>eventadd()</ins> then insert the data into database  |
+  | **@app.route("/admin/listevents")** | <ins>adminlistevents()</ins> | *admineventlist.html* | `eventlist` | <ins>adminlistevents()</ins> get the updated data `eventlist` from database and pass it to *admineventlist.html* to render |
  
   - **add new event_stages**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/admin/addstages") | addstages() | addstages.html | `eventid` | addstages() pass the existing event id list (`eventid`) to addstages.html to render the form for user to input the data |
-  | @app.route("/admin/stage/add") | stageadd() | addstages.html | `stageid`, `stagename`, `eventid`, `location`, `stagedate`, `qualifying`, `pointstoqualify` | addstages.html pass the user input data to stageadd(), which then insert the data to database |
-  | @app.route("/admin/liststages") | liststages() | stagelist.html | `stagelist` | liststages() pass the updated stage list (`stagelist`) to stagelist.html |
+  | **@app.route("/admin/addstages")** | <ins>addstages()</ins> | *addstages.html* | `event` | <ins>addstages()</ins> pass `event`<sub>(events table in database)</sub> to *addstages.html* so that *addstagess.html* could render the form with a selection of available events for user to choose  |
+  | **@app.route("/admin/stage/add")** | <ins>stageadd()</ins> | *addstages.html* | `stagename`, `eventid`, `location`, `stagedate`, `qualifying`, `pointstoqualify` | *addstages.html* pass the user input data to <ins>stageadd()</ins> , which then insert the data into database |
+  | **@app.route("/admin/liststages")** | <ins>liststages()</ins> | *stagelist.html* | `stagelist` | <ins>liststages()</ins> get the updated data `stagelist` from database and pass it to *stagelist.html* to render |
   - **add scores and position**
   
   | route | function | template | data passed | explanation |
