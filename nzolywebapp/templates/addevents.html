@@ -3,20 +3,18 @@
 {% block content %}
 <h2>Add a new event</h2>
 <form action="/admin/event/add" method = "POST">
-    <legend> Add New Events: </legend>
-
-    <div class="input-group mb-3">
-        <label for="EventName" class="form-label">Event Name:</label>
-        <input type="text" class="form-control" placeholder="Event Name" aria-label="eventname" name="eventname" />
+    <div class="col-auto">
+        <label for="EventName" class="form-label">Event Name</label>
+        <input type="text" class="form-control" placeholder="Event Name" name="eventname" />
     </div>
 
-    <div class="input-group mb-3">
-        <label for="Sport" class="form-label">Sport:</label>
+    <div class="col-auto">
+        <label for="Sport" class="form-label">Sport</label>
         <input type="text" name="sport" class="form-control" placeholder="Sports" />
     </div>
 
-    <div class="mb-3">
-        <label for="TeamName" class="form-label">Team Name(TeamID):</label>
+    <div class="col-auto">
+        <label for="TeamName" class="form-label">Team Name (Team ID)</label>
         <select class="form-select" aria-label="Default select example" id="team" name="team">
             {% for entry in team %}
                 <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
@@ -25,7 +23,7 @@
     </div>
 
     <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-3">Add</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
         
 </form>
