@@ -27,7 +27,7 @@ COMP636 Web App
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | **@app.route("/admin/search")** | <ins>search()</ins> | *search.html* | - | render the search page  |
-  | **@app.route("/admin/results")** | <ins>results()</ins> | *search.html, results.html* | `name`, `memberresults`, `eventresults` | *search.html* pass `name`<sub>(user input data)</sub> to <ins>search()</ins>; <ins>search()</ins> get `memberresults` and `eventresults`from database and pass them to *results.html* to render the search results|
+  | **@app.route("/admin/results")** | <ins>results()</ins> | *search.html, results.html, memberresults.html, eventresults.html* | `name`, `member`, `event`, `memberresults`, `eventresults` | *search.html* pass `name`/`member`/`event` <sub>(user input data)</sub> to <ins>search()</ins>; <ins>search()</ins> get `memberresults` and/or `eventresults`from database and pass them to *results.html*/ *memberresults.html* /*eventresults.html* to render the search results|
   <h3>add new members</h3>
   
   | route | function | template | data passed | explanation |
@@ -72,7 +72,7 @@ COMP636 Web App
 
 ## Assumptions
 - **Search Function in Admin Interface:** Instead of specifying member search and event search seperately as different search bars, I designed the search function in admin interface to be able to search from both members and events database at the same time in just one click. It accepts any length of strings, splits the input strings into seperate words by space, searches each words in both members and events database and then returns two results in one search. 
-- **Upcoming Events in Athlete Interface:** Due to the lack of linking information between each athlete/member and the event/stage that does not have a score (upcoming events/stages), I changed the output from the specified athlete's upcoming events/stages to the athlete's team's upcoming events/stages. 
-- 
+- **Upcoming Events in Athlete Interface:** Due to the lack of linking information between each athlete/member and the event/stage that does not have a score (upcoming events/stages), I changed the output from the specified athlete's upcoming events/stages to the athlete's team's upcoming events/stages. So the specified athlete might attend 0, 1, or many of the events/stages listed.
+- **Admin Interface Base 
 
 ## Changes required if the Web App was to support multiple different Olympics
