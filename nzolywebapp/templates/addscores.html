@@ -1,25 +1,25 @@
 {% extends "admin.html" %}
 
 {% block content %}
-{% if stageid or memberid or pointsscored %}
+{% if error %}
     <form action="/admin/score/add" method = "POST">
         <legend>Add Score and Position:</legend>
             <label for="StageName">Event Name - Stage Name (Stage ID):</label>
             <select id="stage" name="stage">
                 {% if stage %}
                     {% for entry in stage %}
-                        <option value="{{stageid}}">{{entry[8]}} - {{entry[1]}} ({{entry[0]}})</option>
+                        <option value="{{entry[0]}}">{{entry[8]}} - {{entry[1]}} ({{entry[0]}})</option>
                     {% endfor %}
                 {% endif %}
             </select>
             <label for="Member">Member Name (Member ID):</label>
             <select id="member" name="member">
                 {% for entry in member %}
-                    <option value="{{memberid}}">{{entry[2]}} {{entry[3]}} ({{entry[0]}})</option>
+                    <option value="{{entry[0]}}">{{entry[2]}} {{entry[3]}} ({{entry[0]}})</option>
                 {% endfor %}
             </select>
             <label for="PointsScored">Points Scored:</label>
-            <input type="text" name="pointsscored" value = "{{pointsscored}}"/>
+            <input type="text" name="pointsscored" />
             <label for="Position">Position:</label>
             <input type="number" name="position" min="0" max="3"/>
             <button type="submit">Add</button>
@@ -47,6 +47,7 @@
             <label for="Position">Position:</label>
             <input type="number" name="position" min="0" max="3"/>
             <button type="submit">Add</button>
+    </form>
 {% endif %}
 
 {% endblock %}
