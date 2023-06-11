@@ -7,9 +7,7 @@
 {% block content %}
 <h4>Upcoming Events & Stages for {{ name }}'s Team</h4>
     <table class="table table-striped table-hover table-bordered">
-        {% if upcomingevents is none %}
-            <p>No upcoming events & stages for {{ name }}'s team.</p>
-        {% else %}
+        {% if upcomingevents %}
             <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th></tr>
             {% for event in upcomingevents %}
                 <tr>
@@ -18,15 +16,15 @@
                 {% endfor %}
                 </tr>
             {% endfor %} 
+        {% else %}
+            <p>No upcoming events & stages for {{ name }}'s team.</p>
         {% endif %}
             
     </table>
 
 <h4>{{ name }}'s Previous Results</h4>
     <table class="table table-striped table-hover table-bordered">
-        {% if previousresult is none %}
-            <p>No previous results for {{ name }}. </p>
-        {% else %}
+        {% if previousresult %}
             <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th><th>Result</th></tr>
             {% for entry in previousresult %}
             <tr>
@@ -51,6 +49,8 @@
                 {% endif %}
             </tr>
             {% endfor %}
+        {% else %}
+            <p>No previous results for {{ name }}. </p>   
         {% endif %}
     </table>
 {% endblock %}
