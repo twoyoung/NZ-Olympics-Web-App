@@ -59,7 +59,7 @@ def athleteinterface(name):
     parameters = (name,)
     connection.execute(sql, parameters)
     upcomingevents = connection.fetchall()
-    sql = """SELECT EventName, StageDate, StageName, Qualifying, PointsScored, PointsToQualify, Position
+    sql = """SELECT EventName, StageDate, StageName, Location, Qualifying, PointsScored, PointsToQualify, Position
                         FROM event_stage_results
                         LEFT JOIN members
                         ON members.MemberID = event_stage_results.MemberID
