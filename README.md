@@ -76,12 +76,15 @@ COMP636 Web App
 
 
 ## Assumptions
-- **Search Function in Admin Interface:** Here I designed 3 ways of searching: searching from both members and events database at the same time in just one click, searching just for members and searching just for events. It accepts any length of strings, splits the input strings into seperate words by space, searches each words in members and/or events database and then returns the results in the corresponding page.
+- **Clickable Name on Member List:** The project requirement asks to make the member name on member list clickable and links to athlete interface, but it does not specify FirstName or LastName, or both. I just made the FirstName clickable and I assumed that all the firstnames are different.
 - **Upcoming Events in Athlete Interface:** Due to the lack of linking information between each athlete/member and the event/stage that does not have a score (upcoming events/stages), I changed the output from the specified athlete's upcoming events/stages to the athlete's team's upcoming events/stages. So the specified athlete could attend 0, 1, or many of the upcoming events/stages listed.
+- **Search Function in Admin Interface:** Here I designed 3 ways of searching: searching from both members and events database at the same time in just one click, searching just for members and searching just for events. It accepts any length of strings, splits the input strings into seperate words by space, searches each words in members and/or events database and then returns the results in the corresponding page.
 - **Base Page Template between Public and Admin Interface:** I chose to create another page template for admin interface instead of using the one for public interface. The reason is that admin interface involves more functions than public interface and I want to just create one base page to contain those function links and let all the admin interface pages inheritate from it.
 - **GET or POST Method:** I did not explicitly detect the methods used as my code does not involve returning different pages according to different methods. I used POST method for most of the form submissions that involve adding or editing data to the database. I used Get method in searching function.
 - **Adding Data with Auto Increment Primary Key:** Noticing that all the tables in the database have auto increment primary key, in the adding data user interface I chose not to ask the user to input the primary key such as member ID or event ID, which might lead to collision of primary keys and need extra effort to detect and validate it, but left it and let it increate by itself.
-- 
+- **Showing the Team Member Report:** Here I let this function redirect to the list team members function and share the same member list html page instead of creating a specific html page for the report. To meet the requirement I let the member list ordered according to the requirement.
+- **Adding Position Corresponding to the Stage:** Here my design is if the input does not meet the check, the input page will be reload and user need to input again.
+
 
 
 ## Changes required if the Web App was to support multiple different Olympics
