@@ -8,31 +8,32 @@ COMP636 Web App
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/") | <ins>home()</ins> | *base.html* | - | render the base page |
-  | @app.route("/listmembers") | <ins>listmembers()</ins> | *memberlist.html* | `memberlist` | <ins>listmembers()</ins> pass `memberlist`<sub>(members table information in database)</sub> to *memberlist.html* |
-  | @app.route("/listevents") | <ins>listevents()</ins> | *eventlist.html* | `eventlist` | <ins>listevents()</ins> pass `eventlist`<sub>(events table information in database)</sub> to *eventlist.html* |
+  | **@app.route("/")** | <ins>home()</ins> | *base.html* | - | render the base page |
+  | **@app.route("/listmembers")** | <ins>listmembers()</ins> | *memberlist.html* | `memberlist` | <ins>listmembers()</ins> pass `memberlist`<sub>(members table information in database)</sub> to *memberlist.html* |
+  | **@app.route("/listevents")** | <ins>listevents()</ins> | *eventlist.html* | `eventlist` | <ins>listevents()</ins> pass `eventlist`<sub>(events table information in database)</sub> to *eventlist.html* |
   - **the athlete interface**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/listmembers/< name>") | <ins>athleteinterface(name)</ins> | *memberlist.html, athleteinterface.html* | `name`, `upcomingevents`, `previousresult` | *memberlist.html* pass `name` to <ins>athleteinterface(name)</ins> to locate the athlete; <ins>athleteinterface(name)</ins> then get data `previousresult`<sub>(athletes previous results)</sub> and `upcomingevents`<sub>(upcoming events)</sub> from database and pass them to *athleteinterface.html* to render | 
+  | **@app.route("/listmembers/< name>")** | <ins>athleteinterface(name)</ins> | *memberlist.html, athleteinterface.html* | `name`, `upcomingevents`, `previousresult` | *memberlist.html* pass `name` to <ins>athleteinterface(name)</ins> to locate the athlete; <ins>athleteinterface(name)</ins> then get data `previousresult`<sub>(athletes previous results)</sub> and `upcomingevents`<sub>(upcoming events)</sub> from database and pass them to *athleteinterface.html* to render | 
 - **the admin interface**
   - **the admin base page**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/admin") | admin() | admin.html | None | render the base page |
+  | **@app.route("/admin")** | <ins>admin()</ins> | *admin.html* | - | render the base page |
   - **search members or/and events using partial match**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/admin/results") | search()| admin.html, results.html | `name`, `memberresults`, `eventresults` | admin.html pass the user input data to `name` in search(), which searches database and and pass the results `memberresults`and `eventresults` and `name` to results.html to render |
+  | **@app.route("/admin/search")** | <ins>search()</ins> | *search.html* | - | render the search page  |
+  | **@app.route("/admin/results")** | <ins>results()</ins> | *search.html, results.html* | `name`, `memberresults`, `eventresults` | *search.html* pass `name`<sub>(user input data)</sub> to <ins>search()</ins>; <ins>search()</ins> get `memberresults` and `eventresults`from database and pass them to *results.html* to render the search results|
   - **add new members**
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/admin/addmembers") | addmembers() | addmembers.html | `teamid` | addmembers() pass the available team id in database (`teamid`) to addmembers.html to render the form with available team id choices for users to input the data | 
-  | @app.route("/admin/members/add") | membersadd() | addmembers.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | admembers.html pass the input data to membersadd(), membersadd() then insert the data into database |
+  | **@app.route("/admin/addmembers")** | <ins>addmembers()</ins> | *addmembers.html* | `team` | <ins>addmembers()</ins> pass `team`<sub>(teams table in database)</sub> to *addmembers.html* so that *addmembers.html* could render the form with a selection of available teams for user to choose | 
+  | **@app.route("/admin/members/add")** | <ins>membersadd()</ins> | *addmembers.html* | `teamid`, `firstname`, `lastname`, `city`, `birthdate` | admembers.html pass the input data to membersadd(), membersadd() then insert the data into database |
   | @app.route("/admin/listmembers") | adminlistmembers() | adminmemberlist.html | `memberlist` | display the most recently updated member list |
   - **edit existing members**
   
