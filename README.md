@@ -90,7 +90,11 @@ COMP636 Web App
 ## Changes required if the Web App was to support multiple different Olympics
 - **Database Tables Change:**
   - A new talbe Olympics that could store different Olympics' Name and it's ID and maybe some other information such as season(summer or winter), location(country), year, etc.
-  - The events table needs an extra column of Olympics ID to specify which Olympics each event associates to.
-  - The event_stage talbe needs an extra column of Olympics ID to specify which Olympics each event stage associates to.
+  - The existing events table needs to include a new column of Olympics ID to indicate which Olympics each event associates to.
+  - The event_stage table needs an extra column of Olympics ID to specify which Olympics each event stage associates to.
+  - The foreign key references in some tables need to be modified to reflect the changes in table names and structure.
 - **Design and Implementation of the Web App:**
-  - There needs a function to list all the Olypmpics with the name clickable that links to another interface 
+  - There needs a function to list all the Olypmpics with the name clickable that links to another interface like the 'NZ Winter Olympics' public interface.
+  - Update the SQL queries throughout the code to reference the tables for different Olympics.
+  - Update the route modifiers to handle requests specific to each type of Olympics. For example, there could be separate routes for listing summer events and winter events.
+  - Need some new html templates and base page template to display information specific to each type of Olympics.
