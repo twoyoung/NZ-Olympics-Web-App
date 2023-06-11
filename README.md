@@ -78,7 +78,7 @@ COMP636 Web App
 ## Assumptions
 - **Search Function in Admin Interface:** Here I designed 3 ways of searching: searching from both members and events database at the same time in just one click, searching just for members and searching just for events. It accepts any length of strings, splits the input strings into seperate words by space, searches each words in members and/or events database and then returns the results in the corresponding page.
 - **Upcoming Events in Athlete Interface:** Due to the lack of linking information between each athlete/member and the event/stage that does not have a score (upcoming events/stages), I changed the output from the specified athlete's upcoming events/stages to the athlete's team's upcoming events/stages. So the specified athlete could attend 0, 1, or many of the upcoming events/stages listed.
-- **Base Page Template between Public and Admin Interface:** I chose to use two different page template for public and admin interface instead of sharing the same one. The reason is that admin interface pages involve more functions than public interface pages and I want to just create one base page to contain those function links and let all the admin interface pages inheritate from it.
+- **Base Page Template between Public and Admin Interface:** I chose to create another page template for admin interface instead of using the one for public interface. The reason is that admin interface involves more functions than public interface and I want to just create one base page to contain those function links and let all the admin interface pages inheritate from it.
 - 
 
 ## Changes required if the Web App was to support multiple different Olympics
