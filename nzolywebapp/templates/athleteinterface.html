@@ -25,7 +25,7 @@
             <td>{{entry[0]}}</td>
             <td>{{entry[1]}}</td>
             <td>{{entry[2]}}</td>
-            {% if entry[3] == 1 %}
+            {% if entry[3] == 1 and entry[5] != None %}
                 {% if entry[4] >= entry[5] %}
                     <td>"Q"</td>
                 {% elif entry[5] > entry[4] %}
