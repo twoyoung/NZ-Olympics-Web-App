@@ -19,24 +19,25 @@
 
 <h4>Previous Results</h4>
     <table class="table table-striped table-hover table-bordered">
-        <tr><th>EventName</th><th>StageDate</th><th>StageName</th>><th>Result</th></tr>
+        <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th><th>Result</th></tr>
         {% for entry in previousresult %}
         <tr>
             <td>{{entry[0]}}</td>
             <td>{{entry[1]}}</td>
             <td>{{entry[2]}}</td>
-            {% if entry[3] == 1 and entry[5] != None %}
-                {% if entry[4] >= entry[5] %}
+            <td>{{entry[3]}}</td>
+            {% if entry[4] == 1 and entry[6] != None %}
+                {% if entry[5] >= entry[6] %}
                     <td>Q</td>
-                {% elif entry[5] > entry[4] %}
+                {% elif entry[6] > entry[5] %}
                     <td>Not Qualified</td>
                 {% endif %}
-            {% elif entry[3] == 0 %}
-                {% if entry[6] == 1 %}
+            {% elif entry[4] == 0 %}
+                {% if entry[7] == 1 %}
                     <td>Gold</td>
-                {% elif entry[6] == 2 %}
+                {% elif entry[7] == 2 %}
                     <td>Silver</td>
-                {% elif entry[6] == 3 %}
+                {% elif entry[7] == 3 %}
                     <td>Bronze</td>
                 {% endif %}
             {% endif %}
