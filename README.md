@@ -8,7 +8,7 @@ COMP636 Web App
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | **@app.route("/")** | <ins>home()</ins> | *base.html* | - | render the base page |
+  | **@app.route("/")** | <ins>home()</ins> | *base.html* | None | render the base page |
   | **@app.route("/listmembers")** | <ins>listmembers()</ins> | *memberlist.html* | `memberlist` | <ins>listmembers()</ins> pass `memberlist`<sub>(members table information in database)</sub> to *memberlist.html* |
   | **@app.route("/listevents")** | <ins>listevents()</ins> | *eventlist.html* | `eventlist` | <ins>listevents()</ins> pass `eventlist`<sub>(events table information in database)</sub> to *eventlist.html* |
   <h3>the athlete interface</h3>
@@ -21,12 +21,12 @@ COMP636 Web App
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | **@app.route("/admin")** | <ins>admin()</ins> | *admin.html* | - | render the base page |
+  | **@app.route("/admin")** | <ins>admin()</ins> | *admin.html* | None | render the base page |
   <h3>search members or/and events using partial match</h3>
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | **@app.route("/admin/search")** | <ins>search()</ins> | *search.html* | - | render the search page  |
+  | **@app.route("/admin/search")** | <ins>search()</ins> | *search.html* | None | render the search page  |
   | **@app.route("/admin/results")** | <ins>results()</ins> | *search.html, results.html, memberresults.html, eventresults.html* | `name`, `member`, `event`, `memberresults`, `eventresults` | Depending on the search bar user chooses, *search.html* passes `name`or `member`or `event` <sub>(user input data)</sub> to <ins>search()</ins>; <ins>search()</ins> get `memberresults` and/or `eventresults`from database and pass them to *results.html* or *memberresults.html* or *eventresults.html* to render the search results|
   <h3>add new members</h3>
   
@@ -72,7 +72,7 @@ COMP636 Web App
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | **@app.route("/admin/showmembers")** | <ins>showmembers()</ins> | -- | -- | redirect to **@app.route("/admin/listmembers")** to render the member list |
+  | **@app.route("/admin/showmembers")** | <ins>showmembers()</ins> | None | None | redirect to **@app.route("/admin/listmembers")** to render the member list |
 
 
 ## Assumptions
