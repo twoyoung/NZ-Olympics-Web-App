@@ -93,3 +93,4 @@ COMP636 Web App
   - The events table needs an extra column of Olympics ID to specify which Olympics each event associates to.
   - The event_stage talbe needs an extra column of Olympics ID to specify which Olympics each event stage associates to.
 - **Design and Implementation of the Web App:**
+  - There needs a function to list all the Olypmpics with the name clickable that links to another interface 
