@@ -27,7 +27,7 @@ COMP636 Web App
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
   | **@app.route("/admin/search")** | <ins>search()</ins> | *search.html* | - | render the search page  |
-  | **@app.route("/admin/results")** | <ins>results()</ins> | *search.html, results.html, memberresults.html, eventresults.html* | `name`, `member`, `event`, `memberresults`, `eventresults` | *search.html* pass `name`/`member`/`event` <sub>(user input data)</sub> to <ins>search()</ins>; <ins>search()</ins> get `memberresults` and/or `eventresults`from database and pass them to *results.html*/ *memberresults.html* /*eventresults.html* to render the search results|
+  | **@app.route("/admin/results")** | <ins>results()</ins> | *search.html, results.html, memberresults.html, eventresults.html* | `name`, `member`, `event`, `memberresults`, `eventresults` | Depending on the search bar user chooses, *search.html* passes `name`or `member`or `event` <sub>(user input data)</sub> to <ins>search()</ins>; <ins>search()</ins> get `memberresults` and/or `eventresults`from database and pass them to *results.html* or *memberresults.html* or *eventresults.html* to render the search results|
   <h3>add new members</h3>
   
   | route | function | template | data passed | explanation |
