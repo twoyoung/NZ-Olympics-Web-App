@@ -88,3 +88,8 @@ COMP636 Web App
 
 
 ## Changes required if the Web App was to support multiple different Olympics
+- **Database Tables Change:**
+  - A new talbe that contains at least different Olympics' Name and it's ID and maybe some other information such as location, date, etc.
+  - The events table needs an extra column of Olympics ID to specify which Olympics each event belongs to.
+  - 
+- **Design and Implementation of the Web App:**
