@@ -39,8 +39,8 @@ COMP636 Web App
   
   | route | function | template | data passed | explanation |
   | --- | --- | --- | --- | --- |
-  | @app.route("/admin/members/edit/<memberid>") | editmember(memberid) | adminmemberlist.html, results.html, editmember.html | `membertoedit`, `teamid` | adminmemberlist.html or results.html pass the `memberid` to editmember() to locate the member to edit; editmember() finds the member data with the same member id from database and the available team id list and pass them to editmember.html which render the form with the member information for user to edit|
-  | @app.route("/admin/updatemembers") | updatemember() | editmember.html | `memberid`, `teamid`, `firstname`, `lastname`, `city`, `birthdate` | editmember.html pass the edited data to updatemember() which update the database | 
+  | **@app.route("/admin/members/edit/< memberid>")** | <ins>editmember()</ins> | *adminmemberlist.html, results.html, editmember.html* | `memberid`, `membertoedit`, `team` | *adminmemberlist.html* or *results.html* pass `memberid` to <ins>editmember()</ins> to locate the member to edit; <ins>editmember()</ins> gets `team`(<sub>a list of the teams</sub>) and `membertoedit`(<sub>member with the required member ID</sub>) from database and pass them to *editmember.html* to render the form with the member information for user to edit|
+  | **@app.route("/admin/updatemembers")** | <ins>updatemember()</ins> | *editmember.html* | `teamid`, `memberid`, `firstname`, `lastname`, `city`, `birthdate` | *editmember.html* pass the edited data to <ins>updatemember()</ins> which then update the database with the data | 
   - **add new events**
   
   | route | function | template | data passed | explanation |
