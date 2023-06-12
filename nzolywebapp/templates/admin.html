@@ -74,45 +74,45 @@
           
             <!-- Use Javascript together with Bootstrap to validate the input -->
             <script>
-              // Enable form validation
-              (function () {
-                'use strict';
-            
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.querySelectorAll('.needs-validation');
-            
-                // Loop over them and prevent submission
-                Array.prototype.slice.call(forms).forEach(function (form) {
-                  form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                      event.preventDefault();
-                      event.stopPropagation();
-                    }
-            
-                    form.classList.add('was-validated');
-            
-                    var numberInput = document.getElementById('numberInput');
-                    if (!isValidNumber(numberInput.value.trim())) {
-                      event.preventDefault();
-                      event.stopPropagation();
-                      numberInput.classList.add('is-invalid');
-                    } else {
-                      numberInput.classList.remove('is-invalid');
-                    }
-                  }, false);
-                });
-              })();
-            
-              // Custom validation function to check if the input is a valid number
-              function isValidNumber(input) {
-                if (input === '') {
-                  return true; // Allow empty input
-                }
-            
-                var numberPattern = /^\d+(\.\d+)?$/;
-                return numberPattern.test(input);
-              }
-            </script>
+  // Enable form validation
+  (function () {
+    'use strict';
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation');
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add('was-validated');
+
+        var numberInput = document.getElementById('numberInput');
+        if (!isValidNumber(numberInput.value.trim())) {
+          event.preventDefault();
+          event.stopPropagation();
+          numberInput.classList.add('is-invalid');
+        } else {
+          numberInput.classList.remove('is-invalid');
+        }
+      }, false);
+    });
+  })();
+
+  // Custom validation function to check if the input is a valid number
+  function isValidNumber(input) {
+    if (input === '') {
+      return true; // Allow empty input
+    }
+
+    var numberPattern = /^\d+(\.\d+)?$/;
+    return numberPattern.test(input);
+  }
+</script>
             
           </section>
         <!-- JavaScript Bundle with Popper -->
