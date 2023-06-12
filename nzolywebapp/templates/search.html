@@ -7,29 +7,42 @@
 <div class="py-5 text-center">
     <h4>Search for members or/and events in one click:</h4>
 </div>
-<form action="/admin/results" method="get">
-    <label for="membersorevents">Input the name of members or/and events:</label>
-    <input type="text" name="searchinfo" />
-    <button type="submit">Search</button>
+<form action="/admin/results" method="get" class="row g-3 justify-content-center">
+    <div class="col-auto">
+      <label for="membersorevents" >Input the event or/and member name:</label>
+      <input type="text" name="searchinfo" class="form-control" placeholder="Search...">
+    </div>
+    <div class="form-group col-md-2 align-self-end">
+      <button class="btn btn-primary" id="btn" name="btn" type="submit">Submit</button>
+    </div>
 </form>
 
 <div class="py-5 text-center">
     <h4>Search just for members:</h4>
 </div>
-<form action="/admin/results" method="get">
-    <label for="member">Input the name of one or more members:</label>
-    <input type="text" name="searchmember" />
-    <button type="submit">Search</button>
-</form>
+<form action="/admin/results" method="get" class="row g-3 justify-content-center">
+    <div class="col-auto">
+      <label for="member" >Input the member name:</label>
+      <input type="text" name="searchmember" class="form-control" placeholder="Search...">
+    </div>
+    <div class="form-group col-md-2 align-self-end">
+      <button class="btn btn-primary" id="btn" name="btn" type="submit">Submit</button>
+    </div>
+  </form>
 
 <div class="py-5 text-center">
     <h4>Search just for events:</h4>
 </div>
-<form action="/admin/results" method="get">
-    <label for="event">Input the name of one or more events:</label>
-    <input type="text" name="searchevent" />
-    <button type="submit">Search</button>
-</form>
+<form action="/admin/results" method="get" class="row g-3 justify-content-center">
+    <div class="col-auto">
+      <label for="event" >Input the event name:</label>
+      <input type="text" name="searchevent" class="form-control" placeholder="Search...">
+    </div>
+    <div class="form-group col-md-2 align-self-end">
+      <button class="btn btn-primary" id="btn" name="btn" type="submit">Submit</button>
+    </div>
+  </form>
 </div>
 
 {% endblock %}
+
