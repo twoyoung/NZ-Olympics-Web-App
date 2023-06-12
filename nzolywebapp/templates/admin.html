@@ -84,7 +84,7 @@
                 // Loop over them and prevent submission
                 Array.prototype.slice.call(forms).forEach(function (form) {
                   form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
+                    if (!form.checkValidity() || !isValidNumber()) {
                       event.preventDefault();
                       event.stopPropagation();
                     }
@@ -93,7 +93,13 @@
                   }, false);
                 });
               })();
-            </script> 
+              
+              // Custom validation function to check if the input is a valid number
+              function isValidNumber() {
+                var input = document.getElementById('numberInput').value;
+                return !isNaN(input);
+              }
+            </script>
             
           </section>
         <!-- JavaScript Bundle with Popper -->
