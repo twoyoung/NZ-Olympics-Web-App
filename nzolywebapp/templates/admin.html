@@ -84,21 +84,27 @@
                 // Loop over them and prevent submission
                 Array.prototype.slice.call(forms).forEach(function (form) {
                   form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity() || !isValidNumber()) {
+                    if (!form.checkValidity()) {
                       event.preventDefault();
                       event.stopPropagation();
                     }
             
                     form.classList.add('was-validated');
+            
+                    if (!isValidNumber()) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      document.getElementById('numberInput').classList.add('is-invalid');
+                    }
                   }, false);
                 });
               })();
-              
+            
               // Custom validation function to check if the input is a valid number
               function isValidNumber() {
-                var input = document.getElementById('numberInput').value;
-                var numberPattern = /^\d+(\.\d+)?$/;
-                return numberPattern.test(input); 
+                var input = document.getElementById('numberInput').value.trim();
+                var numberPattern = /^$|^\d+(\.\d+)?$/;
+                return numberPattern.test(input);
               }
             </script>
             
