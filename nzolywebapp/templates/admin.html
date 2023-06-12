@@ -91,19 +91,25 @@
             
                     form.classList.add('was-validated');
             
-                    if (!isValidNumber()) {
+                    var numberInput = document.getElementById('numberInput');
+                    if (!isValidNumber(numberInput.value.trim())) {
                       event.preventDefault();
                       event.stopPropagation();
-                      document.getElementById('numberInput').classList.add('is-invalid');
+                      numberInput.classList.add('is-invalid');
+                    } else {
+                      numberInput.classList.remove('is-invalid');
                     }
                   }, false);
                 });
               })();
             
               // Custom validation function to check if the input is a valid number
-              function isValidNumber() {
-                var input = document.getElementById('numberInput').value.trim();
-                var numberPattern = /^$|^\d+(\.\d+)?$/;
+              function isValidNumber(input) {
+                if (input === '') {
+                  return true; // Allow empty input
+                }
+            
+                var numberPattern = /^\d+(\.\d+)?$/;
                 return numberPattern.test(input);
               }
             </script>
