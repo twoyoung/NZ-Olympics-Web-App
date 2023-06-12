@@ -97,7 +97,8 @@
               // Custom validation function to check if the input is a valid number
               function isValidNumber() {
                 var input = document.getElementById('numberInput').value;
-                return !isNaN(input);
+                var numberPattern = /^\d+(\.\d+)?$/;
+                return numberPattern.test(input); 
               }
             </script>
             
