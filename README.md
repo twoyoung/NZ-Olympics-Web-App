@@ -85,7 +85,8 @@ COMP636 Web App
 - **Showing the Team Member Report:** Here I let this function redirect to the list team members function and share the same member list html page instead of creating a specific html page for the report. To meet the requirement I let the member list ordered according to the requirement.
 - **Adding Position Corresponding to the Stage:** Here my design is if the input does not meet the check, the input page will be reload and user need to input again.
 - **Using Javascript together with Bootstrap to validate the input:** I found it's tricky to validate the input after the data has been passed to the server side. I was expecting to validate some input before it's been passed to the server. After some searching I found a piece of useful Javascript code which could do this job which is as follows. I put it into the base page *admin.html* so it could help validate all the inputs under the admin interface:
-```< script >
+```Javascript
+   < script>
               // Enable form validation
               (function () {
                 'use strict';
