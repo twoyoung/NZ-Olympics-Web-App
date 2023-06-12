@@ -3,8 +3,8 @@
 <!-- code in here to display the medals report -->
 {% block content %}
 
-<h2>Total medals: {{ num_medals[0][0] }}</h2>
-<h3>Gold medals: {{ num_gold[0][0] }}</h3>
+<h2 class="text-center">Total medals: {{ num_medals[0][0] }}</h2>
+<h3 class="text-center">Gold medals: {{ num_gold[0][0] }}</h3>
 
 <table class="table table-striped table-hover table-bordered">
     <tr><th>Member ID</th><th>First Name</th><th>Last Name</th><th>Team Name</th><th>Team ID</th></tr>
@@ -17,7 +17,7 @@
     {% endfor %}
 </table>
 
-<h3>Silver medals: {{ num_silver[0][0] }}</h3>
+<h3 class="text-center">Silver medals: {{ num_silver[0][0] }}</h3>
 
 <table class="table table-striped table-hover table-bordered">
     <tr><th>Member ID</th><th>First Name</th><th>Last Name</th><th>Team Name</th><th>Team ID</th></tr>
@@ -30,7 +30,7 @@
     {% endfor %}
 </table>
 
-<h3>Bronze medals: {{ num_bronze[0][0] }}</h3>
+<h3 class="text-center">Bronze medals: {{ num_bronze[0][0] }}</h3>
 
 <table class="table table-striped table-hover table-bordered">
     <tr><th>Member ID</th><th>First Name</th><th>Last Name</th><th>Team Name</th><th>Team ID</th></tr>
