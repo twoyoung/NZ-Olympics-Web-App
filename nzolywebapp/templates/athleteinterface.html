@@ -15,7 +15,7 @@
     </div>
     <table class="table table-striped table-hover table-bordered">
         {% if upcomingevents %}
-            <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th></tr>
+            <tr><th>Event Name</th><th>Stage Date</th><th>Stage Name</th><th>Location</th></tr>
             {% for event in upcomingevents %}
                 <tr>
                 {% for entry in event %}
@@ -35,7 +35,7 @@
 </div>
     <table class="table table-striped table-hover table-bordered">
         {% if previousresult %}
-            <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th><th>Result</th></tr>
+            <tr><th>Event Name</th><th>Stage Date</th><th>Stage Name</th><th>Location</th><th>Result</th></tr>
             {% for entry in previousresult %}
             <tr>
                 <td>{{entry[0]}}</td>
