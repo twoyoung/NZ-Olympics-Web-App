@@ -8,7 +8,11 @@
 {% block content %}
 
 <!-- code in here to display the Upcoming Events-->
-<h4 class="text-center">Upcoming Events & Stages for {{ name }}'s Team</h4>
+
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Upcoming Events & Stages for {{ name }}'s Team</h2>
+    </div>
     <table class="table table-striped table-hover table-bordered">
         {% if upcomingevents %}
             <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th></tr>
@@ -26,7 +30,9 @@
     </table>
 
 <!-- code in here to display the previous results-->
-<h4 class="text-center">{{ name }}'s Previous Results</h4>
+<div class="py-5 text-center">
+    <h2>{{ name }}'s Previous Results</h2>
+</div>
     <table class="table table-striped table-hover table-bordered">
         {% if previousresult %}
             <tr><th>EventName</th><th>StageDate</th><th>StageName</th><th>Location</th><th>Result</th></tr>
@@ -57,4 +63,6 @@
             <p>No previous results for {{ name }}. </p>   
         {% endif %}
     </table>
+
+</div>
 {% endblock %}
