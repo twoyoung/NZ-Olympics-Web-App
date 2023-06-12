@@ -1,27 +1,56 @@
 {% extends "admin.html" %}
 
 {% block content %}
-    <form action="/admin/score/add" method = "POST">
-        <legend>Add Score and Position:</legend>
-            <label for="StageName">Event Name - Stage Name (Stage ID):</label>
-            <select id="stage" name="stage">
+<div class="col-md-7 col-lg-8 container" >
+    <h4 class="mb-3">Add a score</h4>
+    <form action="/admin/score/add" method = "POST" class="needs-validation" novalidate>
+      <div class="row g-3">
+
+        <div class="col-md-5">
+            <label for="StageName" class="form-label">Event Name - Stage Name (Stage ID)</label>
+            <select class="form-select" id="stage" name="stage" required>
                 {% if stage %}
-                    {% for entry in stage %}
-                        <option value="{{entry[0]}}">{{entry[8]}} - {{entry[1]}} ({{entry[0]}})</option>
-                    {% endfor %}
+                {% for entry in stage %}
+                    <option value="{{entry[0]}}">{{entry[8]}} - {{entry[1]}} ({{entry[0]}})</option>
+                {% endfor %}
                 {% endif %}
             </select>
-            <label for="Member">Member Name (Member ID):</label>
-            <select id="member" name="member">
+            <div class="invalid-feedback">
+              Please select a valid stage.
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <label for="Member" class="form-label">Member Name</label>
+            <select class="form-select" id="member" name="member" required>
                 {% for entry in member %}
-                    <option value="{{entry[0]}}">{{entry[2]}} {{entry[3]}} ({{entry[0]}})</option>
-                {% endfor %}
+                <option value="{{entry[0]}}">{{entry[2]}} {{entry[3]}} ({{entry[0]}})</option>
+            {% endfor %}
             </select>
-            <label for="PointsScored">Points Scored:</label>
-            <input type="text" name="pointsscored" />
-            <label for="Position">Position:</label>
-            <input type="number" name="position" min="0" max="3"/>
-            <button type="submit">Add</button>
-    </form>
+            <div class="invalid-feedback">
+              Please select a valid Team.
+            </div>
+        </div>
+        
+        <div class="col-sm-6">
+          <label for="PointsScored" class="form-label">Points Scored:</label>
+          <input type="text" name="pointsscored" class="form-control"  value="" required>
+          <div class="invalid-feedback">
+            Valid stage name is required.
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="Position" class="form-label">Position</label>
+          <input type="number" name="position" min="0" max="3" class="form-control" placeholder="" value="">
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+      </form>
+ </div>
 
 {% endblock %}
+
