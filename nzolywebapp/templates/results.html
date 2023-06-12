@@ -24,7 +24,7 @@
             {% endfor %}
         </table>
     {% else %}
-        <p>Couldn't find a member that contains '{{ name }}' in its name.</p>
+        <p class="text-center">Couldn't find a member that contains '{{ name }}' in its name.</p>
     {% endif %}
     <div class="py-5 text-center">
         <h2>Search results in events:</h2>
@@ -42,7 +42,7 @@
         </table>
 </div>
     {% else %}
-        <p>Couldn't find an event that contains '{{ name }}' in its name.</p>
+        <p class="text-center">Couldn't find an event that contains '{{ name }}' in its name.</p>
     {% endif %}
 {% endblock %}
 
