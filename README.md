@@ -83,10 +83,31 @@ COMP636 Web App
 - **GET or POST Method:** I did not explicitly detect the methods used as my code does not involve returning different pages according to different methods. I used POST method for most of the form submissions that involve adding or editing data to the database. I used Get method in searching function.
 - **Adding Data with Auto Increment Primary Key:** Noticing that all the tables in the database have auto increment primary key, in the adding data user interface I chose not to ask the user to input the primary key such as member ID or event ID, which might lead to collision of primary keys and need extra effort to detect and validate it, but left it and let it increate by itself.
 - **Showing the Team Member Report:** Here I let this function redirect to the list team members function and share the same member list html page instead of creating a specific html page for the report. To meet the requirement I let the member list ordered according to the requirement.
-- **Adding Position Corresponding to the Stage:** Here my design is if the input does not meet the check, the input page will be reload and user need to input again.
-
-
-
+- **Adding Position Corresponding to the Stage:** I expected the best solution would be to limit the selection choice of Position according to the previous selection of Stage name, so if the selected stage was not final, then Position selection would not be available. But this seems to be involving complicated Javascript which is beyond my current knowledge. At last, I provided a compromise solution, which is that if the input of stage name and position does not meet the check at the server, the input page will be reloaded with no pop up reminding message and user just need to input the data again.
+- **Using Javascript together with Bootstrap to validate the input:** I found it's tricky to validate the input after the data has been passed to the server side. I was expecting to validate some input before it's been passed to the server. After some searching I found a piece of useful Javascript code which could do this job which is as follows. I put it into the base page *admin.html* so it could help validate all the inputs under the admin interface. 
+```Javascript
+            <script>
+              // Enable form validation
+              (function () {
+                'use strict';
+            
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation');
+            
+                // Loop over them and prevent submission
+                Array.prototype.slice.call(forms).forEach(function (form) {
+                  form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }
+            
+                    form.classList.add('was-validated');
+                  }, false);
+                });
+              })();
+            </script> 
+```
 ## Changes required if the Web App was to support multiple different Olympics
 - **Database Tables Change:**
   - A new talbe Olympics that could store different Olympics' Name and it's ID and maybe some other information such as season(summer or winter), location(country), year, etc.
