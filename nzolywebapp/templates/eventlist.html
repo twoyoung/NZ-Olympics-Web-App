@@ -3,10 +3,11 @@
 <!-- code in here to display a list of events -->
 <!-- eventlist is the variable passed in containing list of loans -->
 
-<div class="py-5 text-center">
-    <h2>Event List</h2>
-    <p class="lead">A list of all NZ Olympic Team events</p>
-</div>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Event List</h2>
+        <p></p>A list of all NZ Olympic Team events</p>
+    </div>
 
 <table class="table table-striped table-hover table-bordered ">
     <tr><th>Event ID</th><th>Event Name</th><th>Sport</th><th>NZ Team</th></tr>
@@ -18,5 +19,7 @@
         </tr>
     {% endfor %}
 </table>
+
+</div>
 
 {% endblock %}
