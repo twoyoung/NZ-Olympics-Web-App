@@ -84,7 +84,7 @@ COMP636 Web App
 - **Adding Data with Auto Increment Primary Key:** Noticing that all the tables in the database have auto increment primary key, in the adding data user interface I chose not to ask the user to input the primary key such as member ID or event ID, which might lead to collision of primary keys and need extra effort to detect and validate it, but left it and let it increate by itself.
 - **Showing the Team Member Report:** Here I let this function redirect to the list team members function and share the same member list html page instead of creating a specific html page for the report. To meet the requirement I let the member list ordered according to the requirement.
 - **Adding Position Corresponding to the Stage:** I expected the best solution would be to limit the selection choice of Position according to the previous selection of Stage name, so if the selected stage was not final, then Position selection would not be available. But this seems to be involving complicated Javascript which is beyond my current knowledge. At last, I provided a compromise solution, which is that if the input of stage name and position does not meet the check at the server, the input page will be reloaded with no pop up reminding message and user just need to input the data again.
-- **Using Javascript together with Bootstrap to validate the input:** I found it's tricky to validate the input after the data has been passed to the server side. I was expecting to validate some input before it's been passed to the server. After some searching I found a piece of useful Javascript code which could do this job which is as follows. I put it into the base page *admin.html* so it could help validate all the inputs under the admin interface. 
+- **Using Javascript together with Bootstrap to validate the input:** I found it's tricky to validate the input after the data has been passed to the server side. I was expecting to validate some input before it's been passed to the server. After some searching I found a piece of useful Javascript code which could do this job which is as follows. I put it into the base page *admin.html* so it could help validate all the inputs under the admin interface. It can both validate if the require field is empty and if the input is number at Pointstoqualify and Score field.
 ```Javascript
             <script>
               // Enable form validation
@@ -103,10 +103,29 @@ COMP636 Web App
                     }
             
                     form.classList.add('was-validated');
+            
+                    var numberInput = document.getElementById('numberInput');
+                    if (!isValidNumber(numberInput.value.trim())) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      numberInput.classList.add('is-invalid');
+                    } else {
+                      numberInput.classList.remove('is-invalid');
+                    }
                   }, false);
                 });
               })();
-            </script> 
+            
+              // Custom validation function to check if the input is a valid number
+              function isValidNumber(input) {
+                if (input === '') {
+                  return true; // Allow empty input
+                }
+            
+                var numberPattern = /^\d+(\.\d+)?$/;
+                return numberPattern.test(input);
+              }
+            </script>
 ```
 ## Changes required if the Web App was to support multiple different Olympics
 - **Database Tables Change:**
