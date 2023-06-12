@@ -1,31 +1,47 @@
 {% extends "admin.html" %}
 
 {% block content %}
-<h2>Add a new event</h2>
-<form action="/admin/event/add" method = "POST">
-    <div class="col-auto">
-        <label for="EventName" class="form-label">Event Name</label>
-        <input type="text" class="form-control" placeholder="Event Name" name="eventname" />
+
+<div class="col-md-7 col-lg-8 container" >
+    <div class="container">
+        <h4 class="mb-3">Add a new event</h4>
     </div>
 
-    <div class="col-auto">
-        <label for="Sport" class="form-label">Sport</label>
-        <input type="text" name="sport" class="form-control" placeholder="Sports" />
-    </div>
+    <form action="/admin/event/add" method = "POST" class="needs-validation" novalidate>
 
-    <div class="col-auto">
-        <label for="TeamName" class="form-label">Team Name (Team ID)</label>
-        <select class="form-select" aria-label="Default select example" id="team" name="team">
+      <div class="row g-3">
+        <div class="col-sm-6">
+          <label for="EventName" class="form-label">Event Name</label>
+          <input type="text" placeholder="Event Name" name="eventname" class="form-control"  required>
+          <div class="invalid-feedback">
+            Valid event name is required.
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="Sport" class="form-label">Sport</label>
+          <input type="text" name="sport" class="form-control" placeholder="Sports" required>
+          <div class="invalid-feedback">
+            Valid sport is required.
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <label for="TeamName" class="form-label">Team</label>
+          <select class="form-select" id="team" name="team" required>
             {% for entry in team %}
                 <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
             {% endfor %}
-        </select>
-    </div>
+          </select>
+          <div class="invalid-feedback">
+            Please select a valid Team.
+          </div>
+        </div>
 
-    <div class="col-auto">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-        
-</form>
+      <hr class="my-4">
+
+      <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+ </div>
 
 {% endblock %}
+
