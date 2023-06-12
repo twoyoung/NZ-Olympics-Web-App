@@ -71,6 +71,30 @@
               <div class="flash">{{ message }}</div>
             {% endfor %}
             {% block content %}{% endblock %}
+          
+            <!-- Use Javascript together with Bootstrap to validate the input -->
+            <script>
+              // Enable form validation
+              (function () {
+                'use strict';
+            
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation');
+            
+                // Loop over them and prevent submission
+                Array.prototype.slice.call(forms).forEach(function (form) {
+                  form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }
+            
+                    form.classList.add('was-validated');
+                  }, false);
+                });
+              })();
+            </script> 
+            
           </section>
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
