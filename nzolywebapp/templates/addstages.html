@@ -6,7 +6,7 @@
     <h4 class="mb-3">Add a new event stage</h4>
     <form action="/admin/stage/add" method = "POST" class="needs-validation" novalidate>
       <div class="row g-3">
-        <div class="col-md-5">
+        <div class="col-sm-6">
             <label for="Event" class="form-label">Event Name</label>
             <select class="form-select" id="event" name="event" required>
               {% for entry in event %}
@@ -18,7 +18,7 @@
             </div>
         </div>
         
-        <div class="col-sm-6">
+        <div class="col-md-5">
           <label for="StageName" class="form-label">Stage Name</label>
           <input type="text" name="stagename" class="form-control"  value="" required>
           <div class="invalid-feedback">
@@ -34,7 +34,7 @@
           </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-5">
             <label for="StageDate" class="form-label">Stage Date</label>
             <input type="date" name="stagedate" class="form-control" placeholder="" required>
             <div class="invalid-feedback">

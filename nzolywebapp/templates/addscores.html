@@ -6,7 +6,7 @@
     <form action="/admin/score/add" method = "POST" class="needs-validation" novalidate>
       <div class="row g-3">
 
-        <div class="col-md-5">
+        <div class="col-sm-6">
             <label for="StageName" class="form-label">Event Name - Stage Name (Stage ID)</label>
             <select class="form-select" id="stage" name="stage" required>
                 {% if stage %}
@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-sm-6">
             <label for="Member" class="form-label">Member Name</label>
             <select class="form-select" id="member" name="member" required>
                 {% for entry in member %}
@@ -33,7 +33,7 @@
         </div>
         
         <div class="col-sm-6">
-          <label for="PointsScored" class="form-label">Points Scored:</label>
+          <label for="PointsScored" class="form-label">Points Scored</label>
           <input type="text" name="pointsscored" id="numberInput" class="form-control"  value="" required>
           <div class="invalid-feedback">
             Please provide a valid number.
