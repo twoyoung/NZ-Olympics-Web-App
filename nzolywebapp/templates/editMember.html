@@ -2,7 +2,7 @@
 {% block title %}Edit member{% endblock %}
 {% block content %}
 
-<div class="col-md-7 col-lg-8 container mt-4" >
+<div class="container col-md-7 col-9 mt-4" >
     <h1 class="my-5">Edit Member {{ memberToEdit[2] }} {{ memberToEdit[3] }}</h4>
     <form action="{{url_for('editMember',memberID = memberToEdit[0])}}" method = "POST" class="needs-validation" novalidate>
         <div class="row g-3">
