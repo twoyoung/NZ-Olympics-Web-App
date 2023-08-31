@@ -1,0 +1,60 @@
+{% extends "adminBase.html" %}
+{% block title %}Add stage{% endblock %}
+{% block content %}
+
+<div class="container col-md-7 col-9 mt-4" >
+    <h1 class="my-5">Add a new event stage</h1>
+    <form action="/admin/add-stages" method = "POST" class="needs-validation" novalidate>
+        <div class="row g-3">
+            <div class="col-sm-6">
+                <label for="Event" class="form-label">Event Name</label>
+                <select class="form-select" id="event" name="event" required>
+                    {% for entry in event %}
+                        <option value="{{entry[0]}}">{{entry[1]}} ({{entry[0]}})</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">
+                    Please select a valid Team.
+                </div>
+            </div>
+            
+            <div class="col-sm-6">
+                <label for="StageName" class="form-label">Stage Name</label>
+                <input type="text" name="stageName" class="form-control"  value="" required>
+                <div class="invalid-feedback">
+                    Valid stage name is required.
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="Location" class="form-label">Location</label>
+                <input type="text" name="location" class="form-control" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                    Valid location is required.
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="StageDate" class="form-label">Stage Date</label>
+                <input type="date" name="stageDate" class="form-control" placeholder="" required>
+                <div class="invalid-feedback">
+                    Valid stage date is required.
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="PointsToQualify" class="form-label">Points to qualify: <span class="text-body-secondary">(Optional)</span></label>
+                <input type="text" name="pointsToQuality" id="numberInput" class="form-control" placeholder="" value="">
+                <div class="invalid-feedback">
+                    Please provide a valid number.
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-4">
+
+        <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

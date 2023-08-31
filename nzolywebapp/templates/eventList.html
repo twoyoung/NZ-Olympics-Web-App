@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Events{% endblock %}
+{% block content %}
+<!-- code in here to display a list of events -->
+<!-- eventList is the variable passed in containing list of loans -->
+
+<div class="container">
+    <div class="pt-5 text-center">
+        <h2>New Zealand Winter Olympics Events</h2>
+        <p>A list of all NZ Olympic Team events</p>
+    </div>
+
+    <table class="table table-striped table-hover table-bordered mt-5">
+        <tr><th>Event ID</th><th>Event Name</th><th>Sport</th><th>NZ Team</th></tr>
+        {% for event in eventList %}
+            <tr>
+                {% for entry in event %}
+                    <td>{{entry}}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

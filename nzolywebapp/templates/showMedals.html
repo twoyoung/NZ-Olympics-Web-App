@@ -1,0 +1,92 @@
+{% extends "adminBase.html" %}
+{% block title %}Medal report{% endblock %}
+{% block content %}
+
+<!-- code in here to display the medals report -->
+<div class="container">
+    <h1 class="my-5 text-center">New Zealand Winter Olympics Medal Report</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr><th>Total Medals: {{ numOfMedals[0][0] }}</th></tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr><th>Gold Medals: {{ numOfGold[0][0] }}</th></tr>
+            <tr>
+                <td colspan="1">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr><th>Member ID</th><th>Name</th><th>Team</th><th>Event</th><th>Sport</th><th>Date</th><th>Location</th><th>Score</th></tr>
+                        </thead>
+                        <tbody>
+                            {% for entry in goldMembers %}
+                                <tr>
+                                    <td>{{entry[0]}}</td>
+                                    <td>{{entry[1]}} {{entry[2]}}</td>
+                                    <td>{{entry[3]}}</td>
+                                    <td>{{entry[4]}}</td>
+                                    <td>{{entry[5]}}</td>
+                                    <td>{{entry[6]}}</td>
+                                    <td>{{entry[7]}}</td>
+                                    <td>{{entry[8]}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr><th>Silver Medals: {{ numOfSilver[0][0] }}</th></tr>
+            <tr>
+                <td colspan="1">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr><th>Member ID</th><th>Name</th><th>Team</th><th>Event</th><th>Sport</th><th>Date</th><th>Location</th><th>Score</th></tr>
+                        </thead>
+                        <tbody>
+                            {% for entry in silverMembers %}
+                                <tr>
+                                    <td>{{entry[0]}}</td>
+                                    <td>{{entry[1]}} {{entry[2]}}</td>
+                                    <td>{{entry[3]}}</td>
+                                    <td>{{entry[4]}}</td>
+                                    <td>{{entry[5]}}</td>
+                                    <td>{{entry[6]}}</td>
+                                    <td>{{entry[7]}}</td>
+                                    <td>{{entry[8]}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr><th>Bronze Medals: {{ numOfBronze[0][0] }}</th></tr>
+            <tr>
+                <td colspan="1">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr><th>Member ID</th><th>Name</th><th>Team</th><th>Event</th><th>Sport</th><th>Date</th><th>Location</th><th>Score</th></tr>
+                        </thead>
+                        <tbody>
+                            {% for entry in bronzeMembers %}
+                                <tr>
+                                    <td>{{entry[0]}}</td>
+                                    <td>{{entry[1]}} {{entry[2]}}</td>
+                                    <td>{{entry[3]}}</td>
+                                    <td>{{entry[4]}}</td>
+                                    <td>{{entry[5]}}</td>
+                                    <td>{{entry[6]}}</td>
+                                    <td>{{entry[7]}}</td>
+                                    <td>{{entry[8]}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+{% endblock %}

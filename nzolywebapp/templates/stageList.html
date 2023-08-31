@@ -1,0 +1,24 @@
+{% extends "adminBase.html" %}
+{% block title %}Stages{% endblock %}
+{% block content %}
+<!-- code in here to display a list of event stages -->
+
+<div class="container">
+    <div class="py-5 text-center">
+        <h1>New Zealand Winter Olympics Event Stages</h1>
+        <p>A list of all NZ Olympics event stages</p>
+    </div>
+
+    <table class="table table-striped table-hover table-bordered">
+        <tr><th>Event ID</th><th>Event Name</th><th>Stage ID</th><th>Stage Name</th><th>Location</th><th>Stage Date</th><th>Qualifying</th><th>Points To Qualify</th></tr>
+        {% for stage in stageList %}
+            <tr>
+                {% for entry in stage %}
+                <td>{{entry}}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

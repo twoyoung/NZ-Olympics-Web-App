@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="p-5 text-center bg-body-tertiary rounded-3">
+    <img src="/static/images/nzOlympicsLogo.svg" class="col-md-4 col-10">
+    <h1 class="text-body-emphasis mt-3">New Zealand Winter Olypmics</h1>
+    <p class="col-lg-8 mx-auto fs-5 text-muted">
+      This is a website to check New Zeland Winter Olympics members and events.
+    </p>
+    <div class="d-inline-flex gap-2 mb-5">
+        <a href="{{ url_for('listEvents') }}">
+            <button class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="button">
+                Event List
+            </button>
+        </a>
+        <span class="mx-1"></span>
+        <a href="{{ url_for('listMembers') }}">
+            <button class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">
+                Member List
+            </button>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

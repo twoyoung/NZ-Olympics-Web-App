@@ -1,0 +1,26 @@
+{% extends "adminBase.html" %}
+{% block title %}Members{% endblock %}
+{% block content %}
+
+<!-- code in here to display a list of members-->
+<div class="container">
+    <div class="py-5 text-center">
+        <h1>New Zealand Winter Olympics Team Members</h1>
+        <p>A list of all NZ Olympic Team members</p>
+    </div>
+
+    <table class="table table-striped table-hover table-bordered">
+        <tr><th>Member ID</th><th>Team</th><th>Full Name</th><th>City</th><th>Birthdate</th><th>Edit</th></tr>
+            {% for entry in memberList %}
+            <tr>
+                <td>{{entry[0]}}</td>
+                <td>{{entry[1]}}</td>
+                <td>{{entry[2]}} {{entry[3]}}</td>
+                <td>{{entry[4]}}</td>
+                <td>{{entry[5]}}</td>
+                <td><a href="/admin/members/edit/{{entry[0]}}">Edit</a></td>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+{% endblock %}
