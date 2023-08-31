@@ -11,12 +11,17 @@
     </div>
 
     <table class="table table-striped table-hover table-bordered">
-        <tr><th>Result ID</th><th>Event Name</th><th>Stage Name</th><th>Stage ID</th><th>First Name</th><th>Last Name</th><th>Member ID</th><th>Points Scored</th><th>Position</th></tr>
+        <tr><th>Result ID</th><th>Event Name</th><th>Stage Name</th><th>Stage ID</th><th>Member Name</th><th>Member ID</th><th>Points Scored</th><th>Position</th></tr>
         {% for score in scoreList %}
             <tr>
-                {% for entry in score %}
-                <td>{{entry}}</td>
-                {% endfor %}
+                <td>{{entry[0]}}</td>
+                <td>{{entry[1]}}</td>
+                <td>{{entry[2]}}</td>
+                <td>{{entry[3]}}</td>
+                <td>{{entry[4]}} {{entry[5]}}</td>
+                <td>{{entry[6]}}</td>
+                <td>{{entry[7]}}</td>
+                <td>{{entry[8]}}</td>
             </tr>
         {% endfor %}
     </table>
