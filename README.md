@@ -6,30 +6,30 @@ It has been deployed on PythonAnywhere: http://twoyoung.pythonanywhere.com/
 ## Outline of the structure of the Web App
 
 - <h2>the default / interface</h2>
- / - home page
+/ - home page
 /members - display the list of all members
   
 /events - display the list of all events  
   
 - <h2>the /admin interface</h2>
-  /admin - home page for admin  
-   /admin/events - display the list of all events  
+/admin - home page for admin  
+/admin/events - display the list of all events  
   
-   /admin/members - display the list of all members  
+/admin/members - display the list of all members  
   
-   /admin/stages - display the list of all event stages  
+/admin/stages - display the list of all event stages  
 
-   /admin/scores - display the list of all event stage results  
+/admin/scores - display the list of all event stage results  
  
-   /admin/add-members - a page to add new members  
+/admin/add-members - a page to add new members  
   
-   /admin/add-events - a page to add new events  
+/admin/add-events - a page to add new events  
   
-   /admin/add-stages - a page to add new event stages  
+/admin/add-stages - a page to add new event stages  
   
-   /admin/add-scores - a page to add new event stage results  
+/admin/add-scores - a page to add new event stage results  
 
-   /admin/show-medals - a page to show the medal reports  
+/admin/show-medals - a page to show the medal reports  
 
 
 
