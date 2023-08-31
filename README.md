@@ -6,6 +6,7 @@ It has been deployed on PythonAnywhere: http://twoyoung.pythonanywhere.com/
 ## Outline of the structure of the Web App
 
 <h3>/</h3>
+
 This branch is for public access
 
 /members - display the list of all members  
@@ -15,6 +16,7 @@ This branch is for public access
 /members/<memberID> - a page to display the selected member's upcoming events and previous results
   
 <h3>/admin</h3>
+
 This branch is for admin access
 
 /admin - home page for admin  
