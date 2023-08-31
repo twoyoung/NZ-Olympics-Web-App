@@ -1,5 +1,5 @@
 # COMP636-Web-Application-Project
-COMP636 Web App
+This is a simple web app for users to check the NZ Olympics events, event stages, members, teams, and results with a partial match searching feature.
 
 ## Outline of the structure of the Web App
 
