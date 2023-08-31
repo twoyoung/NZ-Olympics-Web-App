@@ -5,13 +5,13 @@ It has been deployed on PythonAnywhere: http://twoyoung.pythonanywhere.com/
 
 ## Outline of the structure of the Web App
 
-- <h2>/</h2>
+<h3>/</h3>
 This branch is for public access
 /members - display the list of all members  
 /events - display the list of all events
 /members/<memberID> - a page to display the selected member's upcoming events and previous results
   
-- <h2>/admin</h2>
+<h3>/admin</h3>
 This branch is for admin access
 /admin - home page for admin  
 /admin/events - display the list of all events  
