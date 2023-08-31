@@ -1,6 +1,9 @@
 # COMP636-Web-Application-Project
 This is a simple web app for users to check the NZ Olympics events, event stages, members, teams, and results with a partial match searching feature.
-It has been deployed on PythonAnywhere: http://twoyoung.pythonanywhere.com/
+
+It has been deployed on PythonAnywhere: 
+
+http://twoyoung.pythonanywhere.com/
 
 
 ## Outline of the structure of the Web App
